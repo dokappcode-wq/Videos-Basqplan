@@ -1,11 +1,12 @@
-"""Monta el vídeo de presentación de Basqplan (formato TikTok 9:16).
+"""Monta el vídeo de presentación de Basqplan (formato TikTok 9:16) con música y voz en off.
 
-Estructura (calcada del vídeo de referencia, 11 s):
-  1. 0.0–1.2 s  Foto a pantalla completa + "BIENVENIDOS A" en serif pequeño.
-  2. 1.2–6.3 s  Collage de 3 franjas horizontales que van entrando y cambiando
-                de foto a ritmo; en la franja central aparece el nombre de marca.
-  3. 6.3–11.2 s Cortes rápidos a pantalla completa (~0.6 s por plano) y cierre
-                con el nombre de la marca.
+Estructura (inspirada en el vídeo de referencia), sincronizada a la música (96 BPM, 1 tiempo = 0,625 s):
+  1. 0.00–1.25 s   Foto a pantalla completa + "WELCOME TO" en serif pequeño.
+  2. 1.25–7.50 s   Collage de 3 franjas que entran y cambian de foto cada 2 tiempos;
+                   en la franja central aparece "BASQUE COUNTRY".
+  3. 7.50–22.5 s   Entra la base de la música: montaje a pantalla completa al ritmo.
+  4. 22.5–27.0 s   Cierre con el logo de Basqplan.
+La locución (audio/vo_XX.wav, ver scripts/voiceover.py) se coloca según VOICE.
 
 Uso:  python3 scripts/build_video.py [salida.mp4]
 """
@@ -18,34 +19,52 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from logo import render_logo  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PHOTOS, FONTS = ROOT / "photos", ROOT / "fonts"
+PHOTOS, FONTS, AUDIO = ROOT / "photos", ROOT / "fonts", ROOT / "audio"
 W, H, FPS = 1080, 1920, 30
 BAND = H // 3
+BEAT = 60 / 96
 
 # ---------------------------------------------------------------- textos
-TEXT_SMALL = "BIENVENIDOS A"    # línea pequeña (en la referencia: "ONGI ETORRI")
-TEXT_BIG = "BASQPLAN"           # nombre de marca (en la referencia: "EUSKAL HERRIRA")
-TEXT_END = "BASQPLAN"           # cierre
-TEXT_END_SUB = "PAÍS VASCO"     # subtítulo del cierre
+TEXT_SMALL = "WELCOME TO"        # línea pequeña (en la referencia: "ONGI ETORRI")
+TEXT_BIG = "BASQUE COUNTRY"      # línea grande (en la referencia: "EUSKAL HERRIRA")
+TEXT_END = "BASQPLAN"            # cierre, bajo el logo
+TEXT_END_SUB = "EUSKADI"         # subtítulo del cierre
 
 # ---------------------------------------------------------------- guion
-# Fase 2: franjas. Cada evento: (segundo, franja 0/1/2 o "full", foto, animación)
 INTRO = "otzarreta_vert"
+# Franjas: (segundo, franja 0=arriba 1=centro 2=abajo, foto, animación)
 BANDS = [
-    (1.2, 0, "anboto", "slide_down"),
-    (2.2, 2, "urkiola_caballos", "slide_up"),
-    (3.2, 1, "gaztelugatxe1", "cut"),        # aquí entra el nombre de marca
-    (4.2, 0, "gaztelugatxe_ilun", "cut"),
-    (5.2, 2, "donostia", "cut"),
+    (2 * BEAT, 0, "anboto", "slide_down"),
+    (4 * BEAT, 2, "urkiola_caballos", "slide_up"),
+    (6 * BEAT, 1, "gaztelugatxe1", "cut"),        # aquí entra "BASQUE COUNTRY"
+    (8 * BEAT, 0, "pasaia", "cut"),
+    (10 * BEAT, 2, "donostia", "cut"),
 ]
-TITLE_FROM = 3.2
-MONTAGE_START = 6.3
-MONTAGE = ["gaztelugatxe_vert", "hondarribia_vert", "pasaia", "guggenheim_vert",
-           "otzarreta", "urkiola_cruces", "getaria_ilun", "gaztelugatxe2"]
-SHOT = 0.6
-END_SHOT = "gaztelugatxe_ilun"   # último plano, con el cierre de marca
-END_LEN = 3.5
-DURATION = MONTAGE_START + len(MONTAGE) * SHOT + END_LEN
+TITLE_FROM = 6 * BEAT
+MONTAGE_START = 12 * BEAT
+# Montaje: (foto, duración en tiempos). Suma = 24 tiempos (6 compases).
+MONTAGE = [
+    ("zumaia_vert", 2), ("gaztelugatxe_vert", 2), ("costa_zumaia", 2),   # "Acantilados..."
+    ("otzarreta", 4),                                                    # "Bosques..."
+    ("urkiola_cruces", 2), ("elantxobe", 2), ("hondarribia_vert", 2),    # "Montañas, pueblos marineros,"
+    ("getaria_ilun", 2),                                                 # "...y atardeceres"
+    ("concha", 2),                                                       # "Esto es Euskadi."
+    ("bilbao_noche", 1), ("pintxos", 1), ("guggenheim_vert", 1), ("itzurun", 1),
+]
+END_SHOT = "gaztelugatxe_ilun"   # último plano, con el logo
+END_START = MONTAGE_START + sum(b for _, b in MONTAGE) * BEAT
+END_LEN = 4.5
+DURATION = END_START + END_LEN
+
+# Locución: (archivo, segundo en que empieza)
+VOICE = [
+    ("vo_00.wav", 0.35),    # Hay lugares que se miran... y lugares que se sienten.
+    ("vo_01.wav", 7.70),    # Acantilados que se asoman al mar.
+    ("vo_02.wav", 11.40),   # Bosques que parecen sacados de un cuento.
+    ("vo_03.wav", 14.00),   # Montañas, pueblos marineros, y atardeceres que no se olvidan.
+    ("vo_04.wav", 19.00),   # Esto es Euskadi.
+    ("vo_05.wav", END_START + 0.9),  # Descúbrelo con Basqplan.
+]
 
 
 # ---------------------------------------------------------------- utilidades
@@ -82,7 +101,7 @@ def font(name, size):
 
 
 F_SMALL = font("CormorantGaramond_600SemiBold.ttf", 46)
-F_BIG = font("CormorantGaramond_500Medium.ttf", 104)
+F_BIG = font("CormorantGaramond_500Medium.ttf", 92)
 F_SUB = font("Montserrat_500Medium.ttf", 30)
 F_END = font("CormorantGaramond_500Medium.ttf", 84)
 
@@ -164,20 +183,23 @@ def frame(t):
             elif anim == "slide_up":
                 y = int(H - (H - y) * p)
             img.paste(tile, (0, y))
-        # texto: solo "ONGI ETORRI" hasta que entra la marca
+        # texto: solo la línea pequeña hasta que entra la grande
         if t < TITLE_FROM:
             return draw_text(img, [(TEXT_SMALL, F_SMALL, 10)], H * 0.47)
         a = ease((t - TITLE_FROM) / 0.3)
         return draw_text(img, [(TEXT_SMALL, F_SMALL, 10), (TEXT_BIG, F_BIG, 6, a)], H / 2)
 
-    # --- Fase 3: montaje rápido a pantalla completa
-    i = int((t - MONTAGE_START) // SHOT)
-    if i < len(MONTAGE):
-        local = (t - MONTAGE_START - i * SHOT) / SHOT
-        return cover(MONTAGE[i], W, H, local, zoom=0.05)
+    # --- Fase 3: montaje a pantalla completa, al ritmo de la música
+    if t < END_START:
+        ts = MONTAGE_START
+        for name, beats in MONTAGE:
+            d = beats * BEAT
+            if t < ts + d:
+                return cover(name, W, H, (t - ts) / d, zoom=0.04 + 0.02 * beats)
+            ts += d
 
     # --- Cierre de marca
-    ts = MONTAGE_START + len(MONTAGE) * SHOT
+    ts = END_START
     local = (t - ts) / END_LEN
     img = cover(END_SHOT, W, H, local, zoom=0.05)
     dark = ease((t - ts) / 0.4) * 0.35
@@ -193,15 +215,38 @@ def frame(t):
     return draw_text(out.convert("RGB"), [(TEXT_END, F_END, 8), (TEXT_END_SUB, F_SUB, 12)], H * 0.40 + 290, ta)
 
 
+def mix_audio():
+    """Mezcla música + locución; la música baja automáticamente cuando habla la voz."""
+    dest = AUDIO / "mix.wav"
+    inputs = ["-i", str(AUDIO / "music.wav")]
+    chains = []
+    for k, (f, start) in enumerate(VOICE, start=1):
+        inputs += ["-i", str(AUDIO / f)]
+        ms = int(start * 1000)
+        chains.append(f"[{k}:a]aresample=44100,aformat=channel_layouts=stereo,adelay={ms}|{ms}[v{k}]")
+    n = len(VOICE)
+    vo = "".join(f"[v{k}]" for k in range(1, n + 1))
+    graph = ";".join(chains + [
+        f"{vo}amix=inputs={n}:normalize=0,highpass=f=80,"
+        "equalizer=f=3000:t=q:w=1:g=2,acompressor=threshold=-20dB:ratio=3,volume=1.6,asplit=2[vo][sc]",
+        "[0:a]volume=0.8[mus]",
+        "[mus][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[duck]",
+        f"[duck][vo]amix=inputs=2:normalize=0,alimiter=limit=0.95,apad,atrim=0:{DURATION:.3f}[out]",
+    ])
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph,
+                    "-map", "[out]", "-ar", "44100", str(dest)], check=True)
+    return dest
+
+
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "output" / "basqplan_presentacion.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
     n = round(DURATION * FPS)
+    audio = mix_audio()
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-           "-r", str(FPS), "-i", "-",
-           "-f", "lavfi", "-t", f"{DURATION}", "-i", "anullsrc=r=44100:cl=stereo",
-           "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
-           "-c:a", "aac", "-shortest", "-movflags", "+faststart", str(out)]
+           "-r", str(FPS), "-i", "-", "-i", str(audio),
+           "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "192k", "-t", f"{DURATION:.3f}", "-movflags", "+faststart", str(out)]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for k in range(n):
         p.stdin.write(np.asarray(frame(k / FPS), dtype=np.uint8).tobytes())

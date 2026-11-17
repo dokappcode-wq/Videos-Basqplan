@@ -24,78 +24,98 @@
     "title": "File:Gaztelugatxe iluntzean.JPG",
     "page": "https://commons.wikimedia.org/wiki/File:Gaztelugatxe_iluntzean.JPG",
     "author": "Euskalduna",
-    "license": "CC BY-SA 3.0"
+    "license": "CC BY-SA 3.0",
+    "thumb": "h2000"
   },
   "urkiola_cruces": {
     "title": "File:Urkiola - Mirador de Las Tres Cruces 09.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Urkiola_-_Mirador_de_Las_Tres_Cruces_09.jpg",
     "author": "Zarateman",
-    "license": "CC0"
+    "license": "CC0",
+    "thumb": "h2000"
   },
   "anboto": {
     "title": "File:Anboto 3.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Anboto_3.jpg",
     "author": "Tiia Monto",
-    "license": "CC BY-SA 3.0"
+    "license": "CC BY-SA 3.0",
+    "thumb": "h2000"
   },
   "urkiola_caballos": {
     "title": "File:Urkiola - Saibi - Caballos 02.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Urkiola_-_Saibi_-_Caballos_02.jpg",
     "author": "Basotxerri",
-    "license": "CC BY-SA 4.0"
+    "license": "CC BY-SA 4.0",
+    "thumb": "h2000"
   },
   "otzarreta_vert": {
     "title": "File:Hayedo de Otzarreta Gorbeia.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Hayedo_de_Otzarreta_Gorbeia.jpg",
     "author": "Mikipons",
-    "license": "CC BY-SA 4.0"
+    "license": "CC BY-SA 4.0",
+    "thumb": "h2000"
   },
   "otzarreta": {
     "title": "File:DSCF9555 OTXARRETA.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:DSCF9555_OTXARRETA.jpg",
     "author": "HACERCANDOME",
-    "license": "CC0"
+    "license": "CC0",
+    "thumb": "h2000"
   },
   "zumaia": {
     "title": "File:Zumaia flysch 2.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Zumaia_flysch_2.jpg",
     "author": "Txo",
-    "license": "CC0"
+    "license": "CC0",
+    "thumb": "h2000"
   },
   "hondarribia_vert": {
     "title": "File:Barrio de la Marina (9).jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Barrio_de_la_Marina_(9).jpg",
     "author": "Alberto-g-rovi",
-    "license": "CC BY 3.0"
+    "license": "CC BY 3.0",
+    "thumb": "h2000"
   },
   "hondarribia": {
     "title": "File:Barrio de la Marina (4).jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Barrio_de_la_Marina_(4).jpg",
     "author": "Alberto-g-rovi",
-    "license": "CC BY 3.0"
+    "license": "CC BY 3.0",
+    "thumb": "h2000"
   },
   "getaria_ilun": {
     "title": "File:Getaria iluntzean. Euskal Herria.JPG",
     "page": "https://commons.wikimedia.org/wiki/File:Getaria_iluntzean._Euskal_Herria.JPG",
     "author": "Euskalduna",
-    "license": "CC BY 3.0"
+    "license": "CC BY 3.0",
+    "thumb": "h2000"
   },
   "pasaia": {
     "title": "File:Pasai Donibane, Euskal Herria.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Pasai_Donibane,_Euskal_Herria.jpg",
     "author": "FreeCat",
-    "license": "CC BY 3.0"
+    "license": "CC BY 3.0",
+    "thumb": "h2000"
   },
   "guggenheim_vert": {
     "title": "File:Bilbao - Puente La Salve, Guggenheim, Torre Iberdrola 01.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Bilbao_-_Puente_La_Salve,_Guggenheim,_Torre_Iberdrola_01.jpg",
     "author": "Basotxerri",
-    "license": "CC BY-SA 4.0"
+    "license": "CC BY-SA 4.0",
+    "thumb": "h2000"
   },
   "donostia": {
     "title": "File:Donostia Igeldotik.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Donostia_Igeldotik.jpg",
     "author": "Keta",
-    "license": "CC BY-SA 2.5"
+    "license": "CC BY-SA 2.5",
+    "thumb": "h2000"
+  },
+  "zumaia_vert": {
+    "title": "File:Zumaia Itzurun 6.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Zumaia_Itzurun_6.JPG",
+    "thumb": "h2000",
+    "author": "Txo",
+    "license": "CC BY-SA 3.0"
   }
 }
