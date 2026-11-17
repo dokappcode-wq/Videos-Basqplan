@@ -14,6 +14,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from logo import render_logo  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PHOTOS, FONTS = ROOT / "photos", ROOT / "fonts"
 W, H, FPS = 1080, 1920, 30
@@ -41,7 +44,7 @@ MONTAGE = ["gaztelugatxe_vert", "hondarribia_vert", "pasaia", "guggenheim_vert",
            "otzarreta", "urkiola_cruces", "getaria_ilun", "gaztelugatxe2"]
 SHOT = 0.6
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el cierre de marca
-END_LEN = 1.4
+END_LEN = 2.0
 DURATION = MONTAGE_START + len(MONTAGE) * SHOT + END_LEN
 
 
@@ -81,6 +84,11 @@ def font(name, size):
 F_SMALL = font("CormorantGaramond_600SemiBold.ttf", 46)
 F_BIG = font("CormorantGaramond_500Medium.ttf", 104)
 F_SUB = font("Montserrat_500Medium.ttf", 30)
+F_END = font("CormorantGaramond_500Medium.ttf", 84)
+
+# Logo para el cierre: azul marino → blanco para que se vea sobre fondo oscuro; el dorado se mantiene.
+LOGO_W = 620
+LOGO = render_logo(LOGO_W, {"#033455": "#FFFFFF"})
 
 
 def spaced(draw, text, f, tracking):
@@ -172,9 +180,17 @@ def frame(t):
     ts = MONTAGE_START + len(MONTAGE) * SHOT
     local = (t - ts) / END_LEN
     img = cover(END_SHOT, W, H, local, zoom=0.05)
-    dark = ease((t - ts) / 0.4) * 0.28
+    dark = ease((t - ts) / 0.4) * 0.35
     img = Image.blend(img, Image.new("RGB", img.size), dark)
-    return draw_text(img, [(TEXT_END, F_BIG, 6), (TEXT_END_SUB, F_SUB, 12)], H / 2, ease((t - ts) / 0.4))
+    # logo (fondo transparente) con fundido y ligero zoom de entrada
+    a = ease((t - ts) / 0.5)
+    lw = int(LOGO_W * (0.92 + 0.08 * a))
+    logo = LOGO.resize((lw, round(LOGO.height * lw / LOGO.width)), Image.LANCZOS)
+    logo.putalpha(logo.getchannel("A").point(lambda v: int(v * a)))
+    out = img.convert("RGBA")
+    out.alpha_composite(logo, ((W - logo.width) // 2, int(H * 0.40 - logo.height / 2)))
+    ta = ease((t - ts - 0.25) / 0.4)
+    return draw_text(out.convert("RGB"), [(TEXT_END, F_END, 8), (TEXT_END_SUB, F_SUB, 12)], H * 0.40 + 290, ta)
 
 
 def main():
