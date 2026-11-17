@@ -71,6 +71,13 @@ def main():
     # barrido de platillo invertido hacia la entrada de la base
     note(sweep, 60, t - 2 * BEAT, 2 * BEAT, 70)
 
+    # ---- Golpe cinematográfico en la entrada de la base (timbal grave + platillo)
+    timp = pm.Instrument(program=47, name="timpani")
+    note(timp, 38, t, BAR, 120)
+    note(timp, 26, t, BAR, 110)
+    note(drums, 49, t, 1.5, 100)
+    note(drums, 57, t, 1.5, 70)
+
     # ---- Parte principal
     for i, c in enumerate(MAIN):
         root, chord = CH[c]
@@ -110,7 +117,7 @@ def main():
     for k, p in enumerate([74, 78, 81, 86]):            # arpegio final en arpa
         note(lead, p, t + k * BEAT / 2, BEAT * 3, 72)
 
-    mid.instruments += [piano, strings, pad, bass, lead, sweep, drums]
+    mid.instruments += [piano, strings, pad, bass, lead, sweep, drums, timp]
     midi_path = OUT / "music.mid"
     mid.write(str(midi_path))
     raw = OUT / "music_raw.wav"

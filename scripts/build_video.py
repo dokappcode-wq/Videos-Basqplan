@@ -21,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from logo import render_logo  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PHOTOS, FONTS, AUDIO = ROOT / "photos", ROOT / "fonts", ROOT / "audio"
+PHOTOS, FONTS, AUDIO, CLIPS = ROOT / "photos", ROOT / "fonts", ROOT / "audio", ROOT / "clips"
 W, H, FPS = 1080, 1920, 30
 BAND = H // 3
 BEAT = 60 / 96
@@ -79,8 +79,36 @@ def photo(name):
     return _cache[name]
 
 
+class ClipReader:
+    """Lee fotogramas consecutivos de un vídeo (clips/<nombre>.webm), recortados para cubrir w×h."""
+
+    def __init__(self, name, start, w, h):
+        self.size = (w, h)
+        vf = (f"fps={FPS},scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
+              f"crop={w}:{h},eq=contrast=1.04:saturation=1.08")
+        self.p = subprocess.Popen(["ffmpeg", "-v", "error", "-ss", f"{start}", "-i", str(CLIPS / f"{name}.webm"),
+                                   "-vf", vf, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                                  stdout=subprocess.PIPE)
+        self.last = None
+
+    def next(self):
+        n = self.size[0] * self.size[1] * 3
+        buf = self.p.stdout.read(n)
+        if len(buf) == n:   # si el clip se acaba, se congela el último fotograma
+            self.last = Image.frombuffer("RGB", self.size, buf)
+        return self.last
+
+
+_readers = {}
 def cover(name, w, h, t, zoom=0.06, pan=(0.5, 0.5)):
-    """Recorta la foto para cubrir w×h con un zoom lento (t en 0..1)."""
+    """Foto: la recorta para cubrir w×h con un zoom lento (t en 0..1).
+    Clip de vídeo ("clip:nombre@segundo"): devuelve el siguiente fotograma desde ese segundo."""
+    if name.startswith("clip:"):
+        clip, start = name[5:].split("@")
+        key = (clip, start, w, h)
+        if key not in _readers:
+            _readers[key] = ClipReader(clip, float(start), w, h)
+        return _readers[key].next()
     im = photo(name)
     s = max(w / im.width, h / im.height) * (1 + zoom * t)
     cw, ch = w / s, h / s

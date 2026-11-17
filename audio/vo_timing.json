@@ -1,22 +1,17 @@
 [
   {
     "file": "vo_00.wav",
-    "text": "Acantilados que se asoman al mar.",
-    "duration": 2.601
+    "text": "Hay lugares que no se explican.",
+    "duration": 1.998
   },
   {
     "file": "vo_01.wav",
-    "text": "Bosques que parecen sacados de un cuento.",
-    "duration": 2.589
+    "text": "Se viven.",
+    "duration": 0.792
   },
   {
     "file": "vo_02.wav",
-    "text": "Esto es Euskadi.",
-    "duration": 1.579
-  },
-  {
-    "file": "vo_03.wav",
-    "text": "¿Preparados para descubrir Eus kadi?",
-    "duration": 2.322
+    "text": "¿Preparados para descubrir Euskadi?",
+    "duration": 2.165
   }
 ]
