@@ -1,18 +1,20 @@
 # Videos Basqplan
 
-Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, ~14,5 s),
+Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, 27 s, con música y voz en off),
 con la misma estructura y el mismo ritmo que el vídeo de referencia ([TikTok de @pinsonmap](https://vm.tiktok.com/ZGdXVHxdj/)).
 
 Resultado: [`output/basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4)
 
 ## Estructura
 
-| Tiempo | Qué pasa |
-|---|---|
-| 0,0 – 1,2 s | Foto a pantalla completa (hayedo de Otzarreta) con "BIENVENIDOS A" en serif pequeño y espaciado |
-| 1,2 – 6,3 s | Collage de 3 franjas horizontales: entran deslizando (arriba y abajo) y cambian de foto cada segundo. A los 3,2 s aparece **BASQPLAN** bajo "BIENVENIDOS A" |
-| 6,3 – 11,1 s | Montaje rápido a pantalla completa, un plano cada 0,6 s (Gaztelugatxe, Hondarribia, Pasaia, Bilbao, Otzarreta, Urkiola, Getaria…) |
-| 11,1 – 14,6 s | Cierre sobre el atardecer en Gaztelugatxe: logo de Basqplan (fondo transparente, azul pasado a blanco para que contraste) + **BASQPLAN** / PAÍS VASCO |
+| Tiempo | Imagen | Voz en off |
+|---|---|---|
+| 0 – 1,25 s | Hayedo de Otzarreta a pantalla completa con "WELCOME TO" | *"Hay lugares que se miran… y lugares que se sienten."* |
+| 1,25 – 7,5 s | Collage de 3 franjas que entran y cambian al ritmo; aparece **BASQUE COUNTRY** | — (solo música) |
+| 7,5 – 22,5 s | Entra la base de la música: montaje a pantalla completa al ritmo (acantilados, bosque, montaña, pueblos, atardecer, Gaztelugatxe, pintxos, Bilbao…) | *"Acantilados que se asoman al mar. Bosques que parecen sacados de un cuento. Montañas, pueblos marineros, y atardeceres que no se olvidan. Esto es Euskadi."* |
+| 22,5 – 27 s | Cierre sobre el atardecer: logo de Basqplan + BASQPLAN / EUSKADI | *"Descúbrelo con Basqplan."* |
+
+La música baja de volumen automáticamente mientras habla la voz.
 
 ## Logo
 
@@ -32,11 +34,8 @@ mkdir -p voice_models && cd voice_models && for f in es_ES-davefx-medium.onnx es
 
 Requisitos extra: `pip install pretty_midi piper-tts` y `apt-get install fluidsynth fluid-soundfont-gm`.
 
-## Música original de la referencia
-
-El vídeo sale **sin sonido**. La canción del original ("nostalgia") tiene derechos, así que no la incluyo en el archivo.
-Al subirlo a TikTok, añade ese sonido (u otro) desde la biblioteca de sonidos de la app, que tiene licencia para usarlos.
-Los cortes están pensados para ir a ~100 BPM (un cambio cada 0,6 s).
+Para cambiar la locución, edita `LINES` en `scripts/voiceover.py` y ejecútalo; los momentos en que entra cada frase
+están en `VOICE`, en `scripts/build_video.py`.
 
 ## Cambiar textos, fotos o tiempos
 
@@ -45,6 +44,8 @@ la foto de la intro, las franjas (`BANDS`), el montaje (`MONTAGE`) y la duració
 Para usar fotos propias, pon los `.jpg` en `photos/` y escribe su nombre (sin extensión) en el guion.
 
 ```bash
+python3 scripts/compose_music.py          # genera audio/music.wav
+python3 scripts/voiceover.py              # genera audio/vo_XX.wav
 python3 scripts/build_video.py            # genera output/basqplan_presentacion.mp4
 python3 scripts/fetch_commons.py photos/list.txt   # vuelve a descargar las fotos de Wikimedia Commons
 ```

@@ -48,8 +48,8 @@ MONTAGE = [
     ("otzarreta", 4),                                                    # "Bosques..."
     ("urkiola_cruces", 2), ("elantxobe", 2), ("hondarribia_vert", 2),    # "Montañas, pueblos marineros,"
     ("getaria_ilun", 2),                                                 # "...y atardeceres"
-    ("concha", 2),                                                       # "Esto es Euskadi."
-    ("bilbao_noche", 1), ("pintxos", 1), ("guggenheim_vert", 1), ("itzurun", 1),
+    ("gaztelugatxe2", 2),                                                # "Esto es Euskadi."
+    ("pintxos", 1), ("guggenheim_vert", 1), ("zumaia", 1), ("otzarreta_vert", 1),
 ]
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el logo
 END_START = MONTAGE_START + sum(b for _, b in MONTAGE) * BEAT

@@ -1,11 +1,13 @@
-# Créditos de las fotos
+# Créditos
 
-Todas las fotos son de Wikimedia Commons.
+## Fotos (Wikimedia Commons)
 
 | Foto | Autor | Licencia | Original |
 |---|---|---|---|
 | `anboto.jpg` | Tiia Monto | CC BY-SA 3.0 | [File:Anboto 3.jpg](https://commons.wikimedia.org/wiki/File:Anboto_3.jpg) |
+| `costa_zumaia.jpg` | Jörg Braukmann | CC BY-SA 4.0 | [File:Basque coast near Zumaia.jpg](https://commons.wikimedia.org/wiki/File:Basque_coast_near_Zumaia.jpg) |
 | `donostia.jpg` | Keta | CC BY-SA 2.5 | [File:Donostia Igeldotik.jpg](https://commons.wikimedia.org/wiki/File:Donostia_Igeldotik.jpg) |
+| `elantxobe.jpg` | Ander Abadia Zallo | CC BY-SA 4.0 | [File:27032018-Elantxobe-general.jpg](https://commons.wikimedia.org/wiki/File:27032018-Elantxobe-general.jpg) |
 | `gaztelugatxe1.jpg` | Diego Delso | CC BY-SA 4.0 | [File:Gaztelugache, Bermeo, País Vasco, España, 2019-08-13, DD 14.jpg](https://commons.wikimedia.org/wiki/File:Gaztelugache,_Bermeo,_Pa%C3%ADs_Vasco,_Espa%C3%B1a,_2019-08-13,_DD_14.jpg) |
 | `gaztelugatxe2.jpg` | Coralma* | CC0 | [File:San Juan de Gaztelugache2.jpg](https://commons.wikimedia.org/wiki/File:San_Juan_de_Gaztelugache2.jpg) |
 | `gaztelugatxe_ilun.jpg` | Euskalduna | CC BY-SA 3.0 | [File:Gaztelugatxe iluntzean.JPG](https://commons.wikimedia.org/wiki/File:Gaztelugatxe_iluntzean.JPG) |
@@ -17,6 +19,17 @@ Todas las fotos son de Wikimedia Commons.
 | `otzarreta.jpg` | HACERCANDOME | CC0 | [File:DSCF9555 OTXARRETA.jpg](https://commons.wikimedia.org/wiki/File:DSCF9555_OTXARRETA.jpg) |
 | `otzarreta_vert.jpg` | Mikipons | CC BY-SA 4.0 | [File:Hayedo de Otzarreta Gorbeia.jpg](https://commons.wikimedia.org/wiki/File:Hayedo_de_Otzarreta_Gorbeia.jpg) |
 | `pasaia.jpg` | FreeCat | CC BY 3.0 | [File:Pasai Donibane, Euskal Herria.jpg](https://commons.wikimedia.org/wiki/File:Pasai_Donibane,_Euskal_Herria.jpg) |
+| `pintxos.jpg` | Telle | CC BY-SA 3.0 | [File:Pinchos bermeo 2.JPG](https://commons.wikimedia.org/wiki/File:Pinchos_bermeo_2.JPG) |
 | `urkiola_caballos.jpg` | Basotxerri | CC BY-SA 4.0 | [File:Urkiola - Saibi - Caballos 02.jpg](https://commons.wikimedia.org/wiki/File:Urkiola_-_Saibi_-_Caballos_02.jpg) |
 | `urkiola_cruces.jpg` | Zarateman | CC0 | [File:Urkiola - Mirador de Las Tres Cruces 09.jpg](https://commons.wikimedia.org/wiki/File:Urkiola_-_Mirador_de_Las_Tres_Cruces_09.jpg) |
 | `zumaia.jpg` | Txo | CC0 | [File:Zumaia flysch 2.jpg](https://commons.wikimedia.org/wiki/File:Zumaia_flysch_2.jpg) |
+| `zumaia_vert.jpg` | Txo | CC BY-SA 3.0 | [File:Zumaia Itzurun 6.JPG](https://commons.wikimedia.org/wiki/File:Zumaia_Itzurun_6.JPG) |
+
+## Audio
+
+- Música: original, generada con `scripts/compose_music.py` y sintetizada con el banco de sonidos FluidR3_GM (MIT).
+- Voz: Piper TTS, voz `es_ES-davefx-medium` (CC0).
+
+## Tipografías
+
+- Cormorant Garamond y Montserrat (SIL Open Font License).

@@ -117,5 +117,26 @@
     "thumb": "h2000",
     "author": "Txo",
     "license": "CC BY-SA 3.0"
+  },
+  "costa_zumaia": {
+    "title": "File:Basque coast near Zumaia.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Basque_coast_near_Zumaia.jpg",
+    "thumb": "h2000",
+    "author": "Jörg Braukmann",
+    "license": "CC BY-SA 4.0"
+  },
+  "elantxobe": {
+    "title": "File:27032018-Elantxobe-general.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:27032018-Elantxobe-general.jpg",
+    "thumb": "h2000",
+    "author": "Ander Abadia Zallo",
+    "license": "CC BY-SA 4.0"
+  },
+  "pintxos": {
+    "title": "File:Pinchos bermeo 2.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Pinchos_bermeo_2.JPG",
+    "thumb": "h2000",
+    "author": "Telle",
+    "license": "CC BY-SA 3.0"
   }
 }
