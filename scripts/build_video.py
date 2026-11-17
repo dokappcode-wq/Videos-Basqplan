@@ -1,14 +1,16 @@
-"""Monta el vídeo de presentación de Basqplan (formato TikTok 9:16) con música y voz en off.
+"""Monta el vídeo de presentación de Basqplan (formato TikTok 9:16, ~16 s).
 
-Estructura (inspirada en el vídeo de referencia), sincronizada a la música (96 BPM, 1 tiempo = 0,625 s):
-  1. 0.00–1.25 s   Foto a pantalla completa + "WELCOME TO" en serif pequeño.
-  2. 1.25–7.50 s   Collage de 3 franjas que entran y cambian de foto cada 2 tiempos;
-                   en la franja central aparece "BASQUE COUNTRY".
-  3. 7.50–22.5 s   Entra la base de la música: montaje a pantalla completa al ritmo.
-  4. 22.5–27.0 s   Cierre con el logo de Basqplan.
-La locución (audio/vo_XX.wav, ver scripts/voiceover.py) se coloca según VOICE.
+Estructura (inspirada en el vídeo de referencia; 1 tiempo = 0,625 s a 96 BPM):
+  1. 0.0–2.0 s    Latidos de corazón: la foto se ilumina con cada latido + "WELCOME TO".
+  2. 2.0–4.5 s    Collage de 3 franjas que entran a ritmo; aparece "BASQUE COUNTRY".
+  3. 4.5–12.0 s   Montaje a pantalla completa con la voz en off.
+  4. 12.0–16.0 s  Cierre: logo + "¿Preparados para descubrir Euskadi?".
 
-Uso:  python3 scripts/build_video.py [salida.mp4]
+Genera dos versiones:
+  output/basqplan_para_tiktok.mp4   latidos + voz, SIN música → añadir la canción en TikTok
+  output/basqplan_presentacion.mp4  latidos + música original + voz
+
+Uso:  python3 scripts/build_video.py
 """
 import subprocess, sys
 from pathlib import Path
@@ -28,42 +30,38 @@ BEAT = 60 / 96
 TEXT_SMALL = "WELCOME TO"        # línea pequeña (en la referencia: "ONGI ETORRI")
 TEXT_BIG = "BASQUE COUNTRY"      # línea grande (en la referencia: "EUSKAL HERRIRA")
 TEXT_END = "BASQPLAN"            # cierre, bajo el logo
-TEXT_END_SUB = "EUSKADI"         # subtítulo del cierre
+TEXT_END_Q = ["¿PREPARADOS PARA", "DESCUBRIR EUSKADI?"]
 
 # ---------------------------------------------------------------- guion
+HEARTBEATS = [0.15, 1.05]        # mismos tiempos que en compose_music.py
+MUSIC_START = 2.0                # la música (o la canción en TikTok) entra aquí
 INTRO = "otzarreta_vert"
 # Franjas: (segundo, franja 0=arriba 1=centro 2=abajo, foto, animación)
 BANDS = [
-    (2 * BEAT, 0, "anboto", "slide_down"),
-    (4 * BEAT, 2, "urkiola_caballos", "slide_up"),
-    (6 * BEAT, 1, "gaztelugatxe1", "cut"),        # aquí entra "BASQUE COUNTRY"
-    (8 * BEAT, 0, "pasaia", "cut"),
-    (10 * BEAT, 2, "donostia", "cut"),
+    (MUSIC_START, 0, "anboto", "slide_down"),
+    (MUSIC_START + 1 * BEAT, 2, "urkiola_caballos", "slide_up"),
+    (MUSIC_START + 2 * BEAT, 1, "gaztelugatxe1", "cut"),        # aquí entra "BASQUE COUNTRY"
+    (MUSIC_START + 3 * BEAT, 0, "pasaia", "cut"),
 ]
-TITLE_FROM = 6 * BEAT
-MONTAGE_START = 12 * BEAT
-# Montaje: (foto, duración en tiempos). Suma = 24 tiempos (6 compases).
+TITLE_FROM = MUSIC_START + 2 * BEAT
+MONTAGE_START = MUSIC_START + 4 * BEAT
+# Montaje: (foto, duración en tiempos). Suma = 12 tiempos (3 compases).
 MONTAGE = [
-    ("zumaia_vert", 2), ("gaztelugatxe_vert", 2), ("costa_zumaia", 2),   # "Acantilados..."
-    ("otzarreta", 4),                                                    # "Bosques..."
-    ("urkiola_cruces", 2), ("elantxobe", 2), ("hondarribia_vert", 2),    # "Montañas, pueblos marineros,"
-    ("getaria_ilun", 2),                                                 # "...y atardeceres"
-    ("gaztelugatxe2", 2),                                                # "Esto es Euskadi."
-    ("pintxos", 1), ("guggenheim_vert", 1), ("zumaia", 1), ("otzarreta_vert", 1),
+    ("zumaia_vert", 2), ("gaztelugatxe_vert", 2),                 # "Acantilados que se asoman al mar."
+    ("otzarreta", 2), ("elantxobe", 1), ("hondarribia_vert", 1),  # "Bosques que parecen sacados de un cuento."
+    ("getaria_ilun", 2), ("gaztelugatxe2", 2),                    # "Esto es Euskadi."
 ]
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el logo
 END_START = MONTAGE_START + sum(b for _, b in MONTAGE) * BEAT
-END_LEN = 4.5
+END_LEN = 4.0
 DURATION = END_START + END_LEN
 
 # Locución: (archivo, segundo en que empieza)
 VOICE = [
-    ("vo_00.wav", 0.35),    # Hay lugares que se miran... y lugares que se sienten.
-    ("vo_01.wav", 7.70),    # Acantilados que se asoman al mar.
-    ("vo_02.wav", 11.40),   # Bosques que parecen sacados de un cuento.
-    ("vo_03.wav", 14.00),   # Montañas, pueblos marineros, y atardeceres que no se olvidan.
-    ("vo_04.wav", 19.00),   # Esto es Euskadi.
-    ("vo_05.wav", END_START + 0.9),  # Descúbrelo con Basqplan.
+    ("vo_00.wav", MONTAGE_START + 0.15),   # Acantilados que se asoman al mar.
+    ("vo_01.wav", MONTAGE_START + 2.65),   # Bosques que parecen sacados de un cuento.
+    ("vo_02.wav", MONTAGE_START + 5.25),   # Esto es Euskadi.
+    ("vo_03.wav", END_START + 0.6),        # ¿Preparados para descubrir Euskadi?
 ]
 
 
@@ -104,6 +102,7 @@ F_SMALL = font("CormorantGaramond_600SemiBold.ttf", 46)
 F_BIG = font("CormorantGaramond_500Medium.ttf", 92)
 F_SUB = font("Montserrat_500Medium.ttf", 30)
 F_END = font("CormorantGaramond_500Medium.ttf", 84)
+F_Q = font("CormorantGaramond_600SemiBold.ttf", 58)
 
 # Logo para el cierre: azul marino → blanco para que se vea sobre fondo oscuro; el dorado se mantiene.
 LOGO_W = 620
@@ -160,10 +159,24 @@ def band_state(t):
 
 
 def frame(t):
-    # --- Fase 1: intro a pantalla completa
+    # --- Fase 1: latidos. La foto se ilumina con cada latido sobre fondo casi negro.
     if t < BANDS[0][0]:
-        img = cover(INTRO, W, H, t / BANDS[0][0] * 0.4, pan=(0.5, 0.45))
-        return draw_text(img, [(TEXT_SMALL, F_SMALL, 10)], H * 0.47, ease(t / 0.35))
+        img = cover(INTRO, W, H, t / MUSIC_START * 0.4, pan=(0.5, 0.45))
+        glow = 0.0
+        for hb in HEARTBEATS:
+            for off, amp in ((0.0, 1.0), (0.22, 0.7)):
+                x = t - hb - off
+                if x >= 0:
+                    glow = max(glow, amp * np.exp(-x / 0.25))
+        base = 0.15 + 0.85 * ease((t - HEARTBEATS[-1]) / 0.8) if t > HEARTBEATS[-1] else 0.15
+        bright = min(1.0, base + 0.55 * glow)
+        img = Image.blend(Image.new("RGB", img.size), img, bright)
+        # pequeño "golpe" de zoom en cada latido
+        z = 1 + 0.025 * glow
+        if z > 1.001:
+            cw, ch = W / z, H / z
+            img = img.resize((W, H), Image.LANCZOS, box=((W - cw) / 2, (H - ch) / 2, (W + cw) / 2, (H + ch) / 2))
+        return draw_text(img, [(TEXT_SMALL, F_SMALL, 10)], H * 0.47, ease((t - HEARTBEATS[1]) / 0.5))
 
     # --- Fase 2: collage de franjas
     if t < MONTAGE_START:
@@ -212,47 +225,61 @@ def frame(t):
     out = img.convert("RGBA")
     out.alpha_composite(logo, ((W - logo.width) // 2, int(H * 0.40 - logo.height / 2)))
     ta = ease((t - ts - 0.25) / 0.4)
-    return draw_text(out.convert("RGB"), [(TEXT_END, F_END, 8), (TEXT_END_SUB, F_SUB, 12)], H * 0.40 + 290, ta)
+    img = draw_text(out.convert("RGB"), [(TEXT_END, F_END, 8)], H * 0.40 + 270, ta)
+    qa = ease((t - VOICE[-1][1]) / 0.4)
+    return draw_text(img, [(line, F_Q, 6) for line in TEXT_END_Q], H * 0.70, qa)
 
 
-def mix_audio():
-    """Mezcla música + locución; la música baja automáticamente cuando habla la voz."""
-    dest = AUDIO / "mix.wav"
-    inputs = ["-i", str(AUDIO / "music.wav")]
-    chains = []
-    for k, (f, start) in enumerate(VOICE, start=1):
+def mix_audio(with_music):
+    """Latidos + (música) + locución. La música baja automáticamente cuando habla la voz."""
+    dest = AUDIO / ("mix_musica.wav" if with_music else "mix_tiktok.wav")
+    inputs = ["-i", str(AUDIO / "heartbeat.wav")]
+    chains = ["[0:a]aresample=44100,aformat=channel_layouts=stereo,volume=1.1[hb]"]
+    if with_music:
+        inputs += ["-i", str(AUDIO / "music.wav")]
+        ms = int(MUSIC_START * 1000)
+        chains.append(f"[1:a]aresample=44100,aformat=channel_layouts=stereo,adelay={ms}|{ms},volume=0.8[mus]")
+    first = len(inputs) // 2
+    for k, (f, start) in enumerate(VOICE, start=first):
         inputs += ["-i", str(AUDIO / f)]
         ms = int(start * 1000)
         chains.append(f"[{k}:a]aresample=44100,aformat=channel_layouts=stereo,adelay={ms}|{ms}[v{k}]")
     n = len(VOICE)
-    vo = "".join(f"[v{k}]" for k in range(1, n + 1))
-    graph = ";".join(chains + [
-        f"{vo}amix=inputs={n}:normalize=0,highpass=f=80,"
-        "equalizer=f=3000:t=q:w=1:g=2,acompressor=threshold=-20dB:ratio=3,volume=1.6,asplit=2[vo][sc]",
-        "[0:a]volume=0.8[mus]",
-        "[mus][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[duck]",
-        f"[duck][vo]amix=inputs=2:normalize=0,alimiter=limit=0.95,apad,atrim=0:{DURATION:.3f}[out]",
-    ])
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph,
-                    "-map", "[out]", "-ar", "44100", str(dest)], check=True)
+    vo = "".join(f"[v{k}]" for k in range(first, first + n))
+    vo_fx = (f"{vo}amix=inputs={n}:normalize=0,highpass=f=80,"
+             "equalizer=f=3000:t=q:w=1:g=2,acompressor=threshold=-20dB:ratio=3,volume=1.6")
+    chains.append(vo_fx + (",asplit=2[vo][sc]" if with_music else "[vo]"))
+    if with_music:
+        chains += ["[mus][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[duck]",
+                   "[hb][duck][vo]amix=inputs=3:normalize=0[pre]"]
+    else:
+        chains.append("[hb][vo]amix=inputs=2:normalize=0[pre]")
+    chains.append(f"[pre]alimiter=limit=0.95,apad=whole_dur={DURATION:.3f}[out]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(chains),
+                    "-map", "[out]", "-t", f"{DURATION:.3f}", "-ar", "44100", str(dest)], check=True)
     return dest
 
 
 def main():
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "output" / "basqplan_presentacion.mp4"
-    out.parent.mkdir(parents=True, exist_ok=True)
+    outdir = ROOT / "output"
+    outdir.mkdir(parents=True, exist_ok=True)
+    silent = outdir / "_video.mp4"
     n = round(DURATION * FPS)
-    audio = mix_audio()
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-           "-r", str(FPS), "-i", "-", "-i", str(audio),
-           "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p",
-           "-c:a", "aac", "-b:a", "192k", "-t", f"{DURATION:.3f}", "-movflags", "+faststart", str(out)]
+           "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow", "-crf", "19",
+           "-pix_fmt", "yuv420p", str(silent)]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for k in range(n):
         p.stdin.write(np.asarray(frame(k / FPS), dtype=np.uint8).tobytes())
     p.stdin.close()
     p.wait()
-    print(f"{out}  ({n} fotogramas, {DURATION:.1f} s)")
+    for name, with_music in (("basqplan_para_tiktok.mp4", False), ("basqplan_presentacion.mp4", True)):
+        audio = mix_audio(with_music)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(audio), "-c:v", "copy",
+                        "-c:a", "aac", "-b:a", "192k", "-t", f"{DURATION:.3f}", "-movflags", "+faststart",
+                        str(outdir / name)], check=True)
+        print(f"output/{name}  ({DURATION:.1f} s)")
+    silent.unlink()
 
 
 if __name__ == "__main__":

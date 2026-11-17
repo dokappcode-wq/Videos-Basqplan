@@ -1,15 +1,17 @@
 """Compone y sintetiza la música del vídeo (original, libre de derechos).
 
-96 BPM, 4/4 (1 compás = 2,5 s). Progresión emotiva Bm – G – D – A.
-  compases 0-2  (0.0-7.5 s)   intro: piano en arpegios + cuerdas, crescendo final
-  compases 3-8  (7.5-22.5 s)  entra la base: bombo, palmas, hi-hat, bajo y melodía
-  compás  9+    (22.5-27 s)   cierre en Re mayor, deja sonar
+96 BPM, 4/4 (1 compás = 2,5 s). Progresión emotiva Bm – G – A → D.
+  compás 0     (0.0-2.5 s)   intro: piano en arpegios + cuerdas, barrido hacia la entrada
+  compases 1-3 (2.5-10 s)    entra la base: bombo, palmas, hi-hat, bajo y melodía
+  compás 4+    (10-14 s)     cierre en Re mayor, deja sonar
+También genera los latidos de corazón del arranque del vídeo (audio/heartbeat.wav).
 
-Uso: python3 scripts/compose_music.py  → audio/music.wav
+Uso: python3 scripts/compose_music.py  → audio/music.wav, audio/heartbeat.wav
 Requiere: pretty_midi, fluidsynth y el banco de sonidos FluidR3_GM (licencia MIT).
 """
-import subprocess
+import subprocess, wave
 from pathlib import Path
+import numpy as np
 import pretty_midi as pm
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,8 +29,8 @@ CH = {
     "D":  (50, [57, 62, 66]),   # A3 D4 F#4
     "A":  (45, [57, 61, 64]),   # A3 C#4 E4
 }
-INTRO = ["G", "D", "A"]
-MAIN = ["Bm", "G", "D", "A", "G", "A"]
+INTRO = ["G"]
+MAIN = ["Bm", "G", "A"]
 END = "D"
 
 # Melodía (grado por corchea, None = silencio) para la parte principal; notas en Re mayor.
@@ -57,7 +59,7 @@ def main():
 
     t = 0.0
     # ---- Intro: arpegios de piano + cuerdas que crecen
-    for i, c in enumerate(INTRO):
+    for i, c in enumerate(INTRO, start=2):
         root, chord = CH[c]
         arp = chord + [chord[1] + 12, chord[2] + 12, chord[1] + 12, chord[2], chord[1]]
         for k in range(8):
@@ -117,12 +119,37 @@ def main():
                     "-o", "synth.reverb.level=0.6", "-o", "synth.chorus.active=1",
                     "-F", str(raw), SF2, str(midi_path)], check=True, capture_output=True)
     # normaliza y añade un fundido de salida
-    total = t + BAR * 1.8
+    total = t + BAR * 1.6
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-t", f"{total:.2f}",
-                    "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,afade=t=out:st={total - 1.6:.2f}:d=1.6",
+                    "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,afade=t=out:st={total - 1.4:.2f}:d=1.4",
                     "-ar", "44100", str(OUT / "music.wav")], check=True)
     raw.unlink()
     print(f"audio/music.wav ({total:.2f} s)")
+    heartbeat(OUT / "heartbeat.wav")
+
+
+HEARTBEATS = [0.15, 1.05]   # segundos en los que suena cada latido (lub-dub)
+
+
+def heartbeat(dest, sr=44100, length=2.2):
+    """Latidos de corazón sintetizados: dos golpes graves por latido (lub-dub)."""
+    t = np.arange(int(sr * length)) / sr
+    out = np.zeros_like(t)
+
+    def thump(t0, freq, amp, decay):
+        x = t - t0
+        env = np.where(x >= 0, (1 - np.exp(-x / 0.004)) * np.exp(-x / decay), 0.0)
+        # caída de tono rápida, como un golpe de bombo apagado
+        phase = 2 * np.pi * (freq * x - 18 * decay * np.expm1(-x / decay))
+        return amp * env * np.sin(np.where(x >= 0, phase, 0))
+
+    for b in HEARTBEATS:
+        out += thump(b, 52, 1.0, 0.09) + thump(b + 0.22, 46, 0.7, 0.08)
+    out = np.tanh(out * 1.4) * 0.9
+    pcm = (np.stack([out, out], axis=1) * 32767).astype(np.int16)
+    with wave.open(str(dest), "wb") as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes(pcm.tobytes())
 
 
 if __name__ == "__main__":

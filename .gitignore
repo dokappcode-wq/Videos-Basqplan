@@ -1,4 +1,5 @@
 __pycache__/
 *.pyc
 voice_models/
-audio/mix.wav
+audio/mix*.wav
+output/_video.mp4

@@ -1,32 +1,22 @@
 [
   {
     "file": "vo_00.wav",
-    "text": "Hay lugares que se miran... y lugares que se sienten.",
-    "duration": 3.239
+    "text": "Acantilados que se asoman al mar.",
+    "duration": 2.601
   },
   {
     "file": "vo_01.wav",
-    "text": "Acantilados que se asoman al mar.",
-    "duration": 2.438
+    "text": "Bosques que parecen sacados de un cuento.",
+    "duration": 2.589
   },
   {
     "file": "vo_02.wav",
-    "text": "Bosques que parecen sacados de un cuento.",
-    "duration": 2.45
+    "text": "Esto es Euskadi.",
+    "duration": 1.579
   },
   {
     "file": "vo_03.wav",
-    "text": "Montañas, pueblos marineros, y atardeceres que no se olvidan.",
-    "duration": 4.098
-  },
-  {
-    "file": "vo_04.wav",
-    "text": "Esto es Euskadi.",
-    "duration": 1.637
-  },
-  {
-    "file": "vo_05.wav",
-    "text": "Descúbrelo con Bask plan.",
-    "duration": 2.171
+    "text": "¿Preparados para descubrir Eus kadi?",
+    "duration": 2.322
   }
 ]

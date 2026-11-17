@@ -11,12 +11,10 @@ OUT = ROOT / "audio"
 
 # Guion de la locución. Cada frase va en su propio archivo para sincronizarla con las imágenes.
 LINES = [
-    "Hay lugares que se miran... y lugares que se sienten.",
     "Acantilados que se asoman al mar.",
     "Bosques que parecen sacados de un cuento.",
-    "Montañas, pueblos marineros, y atardeceres que no se olvidan.",
     "Esto es Euskadi.",
-    "Descúbrelo con Bask plan.",   # escrito así para que la voz pronuncie bien "Basqplan"
+    "¿Preparados para descubrir Eus kadi?",   # separado para que la voz pronuncie bien "Euskadi"
 ]
 
 

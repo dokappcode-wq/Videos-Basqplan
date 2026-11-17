@@ -1,20 +1,25 @@
 # Videos Basqplan
 
-Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, 27 s, con música y voz en off),
-con la misma estructura y el mismo ritmo que el vídeo de referencia ([TikTok de @pinsonmap](https://vm.tiktok.com/ZGdXVHxdj/)).
+Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, 16 s),
+inspirado en el vídeo de referencia ([TikTok de @pinsonmap](https://vm.tiktok.com/ZGdXVHxdj/)).
 
-Resultado: [`output/basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4)
+Hay dos versiones en `output/`:
+
+| Archivo | Audio | Para qué |
+|---|---|---|
+| [`basqplan_para_tiktok.mp4`](output/basqplan_para_tiktok.mp4) | Latidos + voz en off, **sin música** | Publicar en TikTok añadiendo la canción desde la app ("Ordinary" de Alex Warren). Baja el volumen de la canción para que se oiga la voz. |
+| [`basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4) | Latidos + música original + voz | Instagram, web, presentaciones… (sin problemas de derechos) |
+
+"Ordinary" tiene derechos de autor y no puede ir dentro del archivo; TikTok sí tiene licencia para usarla desde su biblioteca de sonidos.
 
 ## Estructura
 
-| Tiempo | Imagen | Voz en off |
+| Tiempo | Imagen | Audio |
 |---|---|---|
-| 0 – 1,25 s | Hayedo de Otzarreta a pantalla completa con "WELCOME TO" | *"Hay lugares que se miran… y lugares que se sienten."* |
-| 1,25 – 7,5 s | Collage de 3 franjas que entran y cambian al ritmo; aparece **BASQUE COUNTRY** | — (solo música) |
-| 7,5 – 22,5 s | Entra la base de la música: montaje a pantalla completa al ritmo (acantilados, bosque, montaña, pueblos, atardecer, Gaztelugatxe, pintxos, Bilbao…) | *"Acantilados que se asoman al mar. Bosques que parecen sacados de un cuento. Montañas, pueblos marineros, y atardeceres que no se olvidan. Esto es Euskadi."* |
-| 22,5 – 27 s | Cierre sobre el atardecer: logo de Basqplan + BASQPLAN / EUSKADI | *"Descúbrelo con Basqplan."* |
-
-La música baja de volumen automáticamente mientras habla la voz.
+| 0 – 2 s | La foto del hayedo de Otzarreta se ilumina con cada latido; aparece "WELCOME TO" | Dos latidos de corazón |
+| 2 – 4,5 s | Collage de 3 franjas que entran a ritmo; aparece **BASQUE COUNTRY** | Entra la música |
+| 4,5 – 12 s | Montaje a pantalla completa (Zumaia, Gaztelugatxe, Otzarreta, Elantxobe, Hondarribia, Getaria) | *"Acantilados que se asoman al mar. Bosques que parecen sacados de un cuento. Esto es Euskadi."* |
+| 12 – 16 s | Cierre: logo + BASQPLAN + "¿PREPARADOS PARA DESCUBRIR EUSKADI?" | *"¿Preparados para descubrir Euskadi?"* |
 
 ## Logo
 
@@ -44,9 +49,9 @@ la foto de la intro, las franjas (`BANDS`), el montaje (`MONTAGE`) y la duració
 Para usar fotos propias, pon los `.jpg` en `photos/` y escribe su nombre (sin extensión) en el guion.
 
 ```bash
-python3 scripts/compose_music.py          # genera audio/music.wav
+python3 scripts/compose_music.py          # genera audio/music.wav y audio/heartbeat.wav
 python3 scripts/voiceover.py              # genera audio/vo_XX.wav
-python3 scripts/build_video.py            # genera output/basqplan_presentacion.mp4
+python3 scripts/build_video.py            # genera las dos versiones en output/
 python3 scripts/fetch_commons.py photos/list.txt   # vuelve a descargar las fotos de Wikimedia Commons
 ```
 
