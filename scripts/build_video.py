@@ -44,7 +44,7 @@ MONTAGE = ["gaztelugatxe_vert", "hondarribia_vert", "pasaia", "guggenheim_vert",
            "otzarreta", "urkiola_cruces", "getaria_ilun", "gaztelugatxe2"]
 SHOT = 0.6
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el cierre de marca
-END_LEN = 2.0
+END_LEN = 3.5
 DURATION = MONTAGE_START + len(MONTAGE) * SHOT + END_LEN
 
 

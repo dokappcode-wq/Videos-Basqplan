@@ -1,6 +1,6 @@
 # Videos Basqplan
 
-Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, ~13 s),
+Vídeo de presentación de marca de **Basqplan** en formato TikTok/Reels (vertical 1080×1920, 30 fps, ~14,5 s),
 con la misma estructura y el mismo ritmo que el vídeo de referencia ([TikTok de @pinsonmap](https://vm.tiktok.com/ZGdXVHxdj/)).
 
 Resultado: [`output/basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4)
@@ -12,7 +12,7 @@ Resultado: [`output/basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4
 | 0,0 – 1,2 s | Foto a pantalla completa (hayedo de Otzarreta) con "BIENVENIDOS A" en serif pequeño y espaciado |
 | 1,2 – 6,3 s | Collage de 3 franjas horizontales: entran deslizando (arriba y abajo) y cambian de foto cada segundo. A los 3,2 s aparece **BASQPLAN** bajo "BIENVENIDOS A" |
 | 6,3 – 11,1 s | Montaje rápido a pantalla completa, un plano cada 0,6 s (Gaztelugatxe, Hondarribia, Pasaia, Bilbao, Otzarreta, Urkiola, Getaria…) |
-| 11,1 – 13,1 s | Cierre sobre el atardecer en Gaztelugatxe: logo de Basqplan (fondo transparente, azul pasado a blanco para que contraste) + **BASQPLAN** / PAÍS VASCO |
+| 11,1 – 14,6 s | Cierre sobre el atardecer en Gaztelugatxe: logo de Basqplan (fondo transparente, azul pasado a blanco para que contraste) + **BASQPLAN** / PAÍS VASCO |
 
 ## Logo
 
