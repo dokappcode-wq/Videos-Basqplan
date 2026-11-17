@@ -12,7 +12,7 @@ Resultado: [`output/basqplan_presentacion.mp4`](output/basqplan_presentacion.mp4
 | 0,0 – 1,2 s | Foto a pantalla completa (hayedo de Otzarreta) con "BIENVENIDOS A" en serif pequeño y espaciado |
 | 1,2 – 6,3 s | Collage de 3 franjas horizontales: entran deslizando (arriba y abajo) y cambian de foto cada segundo. A los 3,2 s aparece **BASQPLAN** bajo "BIENVENIDOS A" |
 | 6,3 – 11,1 s | Montaje rápido a pantalla completa, un plano cada 0,6 s (Gaztelugatxe, Hondarribia, Pasaia, Bilbao, Otzarreta, Urkiola, Getaria…) |
-| 11,1 – 12,5 s | Cierre: **BASQPLAN** / PAÍS VASCO |
+| 11,1 – 12,5 s | Cierre sobre el atardecer en Gaztelugatxe: **BASQPLAN** / PAÍS VASCO |
 
 ## Música
 

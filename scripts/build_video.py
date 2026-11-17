@@ -40,7 +40,7 @@ MONTAGE_START = 6.3
 MONTAGE = ["gaztelugatxe_vert", "hondarribia_vert", "pasaia", "guggenheim_vert",
            "otzarreta", "urkiola_cruces", "getaria_ilun", "gaztelugatxe2"]
 SHOT = 0.6
-END_SHOT = "hondarribia"   # último plano, con el cierre de marca
+END_SHOT = "gaztelugatxe_ilun"   # último plano, con el cierre de marca
 END_LEN = 1.4
 DURATION = MONTAGE_START + len(MONTAGE) * SHOT + END_LEN
 
@@ -110,10 +110,14 @@ def draw_text(img, lines, cy, alpha=1.0):
             d.text((x0 + x, y), ch, font=f, fill=(255, 255, 255, int(255 * alpha * la)))
         y += h + gap
     # sombra suave para que se lea sobre cualquier foto
-    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    shadow.putalpha(layer.getchannel("A").point(lambda v: int(v * 0.55)).filter(ImageFilter.GaussianBlur(6)))
+    a_ch = layer.getchannel("A")
     out = img.convert("RGBA")
-    out.alpha_composite(shadow, (0, 3))
+    # halo difuso amplio + sombra cercana más marcada
+    for blur, op, dy in ((22, 0.55, 0), (5, 0.75, 2)):
+        shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        shadow.putalpha(a_ch.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(blur))
+                        .point(lambda v, op=op: int(min(255, v * op * 1.6))))
+        out.alpha_composite(shadow, (0, dy))
     out.alpha_composite(layer)
     return out.convert("RGB")
 
