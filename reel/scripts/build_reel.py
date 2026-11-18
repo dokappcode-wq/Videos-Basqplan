@@ -46,48 +46,50 @@ QUESTION = ["¿Preparados para", "descubrir Euskadi?"]
 # ------------------------------------------------------------------ escaleta
 # (inicio, fuente, opciones). Cada plano dura hasta el inicio del siguiente.
 #   fuente: "v@seg" = metraje aéreo desde ese segundo · otro nombre = foto de reel/assets
-#   move: in / out / left / right / up      tr: cut / fade / punch / whip
+#   pos: encuadre fijo (x, y) de 0 a 1      tr: cut (por defecto) / fade
+#   Las imágenes son estáticas: sin zoom ni movimiento añadido.
 SHOTS = [
     # ESCENA 1 — gancho: negro + latido + texto; la imagen entra con la música
-    (3.33, "v@19.6", dict(move="in", tr="fade")),            # el mar rompiendo en el Flysch (cenital)
-    (4.67, "v@14.6", dict(move="right", tr="cut")),          # costa verde sobre el Cantábrico
-    (5.33, "v@45.4", dict(move="in", tr="cut")),             # detalle: rocas del Flysch y agua (intriga)
+    (3.33, "v@19.6", dict(tr="fade")),                       # el mar rompiendo en el Flysch (cenital)
+    (4.67, "aereo_bakio", dict()),                           # Bakio y Gaztelugatxe desde el aire
+    (5.33, "v@45.4", dict()),                                # detalle: rocas del Flysch y agua (intriga)
     # ESCENA 2 — entra BASQPLAN (6.00–7.33 revelado de marca sobre el Flysch)
-    (6.00, "v@52.6", dict(move="in", tr="fade", brand=True)),
-    (7.33, "v@29.6", dict(move="left", tr="punch")),         # costa
-    (8.00, "anchoas-gaintza-getaria_L", dict(move="in", tr="cut")),   # Getaria, pueblo marinero
-    (8.67, "pagoeta-txakoli_R", dict(move="up", tr="cut")),  # viñedos frente al mar
-    (9.33, "granja-txakoli_R", dict(move="in", tr="cut")),   # gastronomía: txakoli
-    # ESCENA 3 — experiencias reales de BASQPLAN (aceleran con la música)
-    (10.00, "v@80.0", dict(move="right", tr="whip", label=("Barco por el Flysch", "Zumaia"))),  # el Flysch desde el mar
-    (11.33, "v@54.4", dict(move="in", tr="cut", label=("Barco por el Flysch", "Zumaia"))),
-    (12.67, "granja-barco-flysch_L", dict(move="in", tr="whip", label=("Caserío y granja", None))),
-    (13.67, "pagoeta-txakoli_L", dict(move="left", tr="cut", label=("Caserío y granja", None))),
-    (14.33, "k5-ganeta-txakoli_L", dict(move="in", tr="whip", label=("Cata de txakoli", "Aia · Getaria"))),
-    (15.33, "barco-flysch-ganeta_R", dict(move="right", tr="cut", label=("Cata de txakoli", "Aia · Getaria"))),
-    (16.00, "k5-ganeta-txakoli_R", dict(move="in", tr="cut", label=("Cata de txakoli", "Aia · Getaria"))),
-    (16.67, "pagoeta-anchoas-getaria_R", dict(move="in", tr="whip", label=("Obrador de anchoas", "Getaria"))),
-    (17.33, "v@5.6", dict(move="left", tr="cut", label=("Obrador de anchoas", "Getaria"))),
-    (18.00, "ceramica-barco-flysch_L", dict(move="in", tr="whip", label=("Taller de cerámica", "Zumaia"))),
-    (18.67, "ceramica-ganeta_L", dict(move="out", tr="cut", label=("Taller de cerámica", "Zumaia"))),
-    (19.33, "gaintza-barco-flysch_L", dict(move="in", tr="whip", label=("Oficios de Pagoeta", "Aia"))),
-    (20.00, "v@57.8", dict(move="in", tr="cut")),            # alguien contemplando el mar
-    (20.67, "barco-flysch-gaintza_R", dict(move="in", tr="punch")),
-    (21.00, "k5-ceramica_R", dict(move="in", tr="punch")),
-    (21.33, "barco-flysch-gaintza_L", dict(move="right", tr="punch")),
-    (21.67, "anchoas-ceramica_R", dict(move="in", tr="punch")),
-    (22.00, "pagoeta-oficios-gaintza_R", dict(move="up", tr="punch")),
-    (22.33, "anchoas-gaintza-getaria_R", dict(move="in", tr="punch")),
-    (22.67, "v@62.8", dict(move="in", tr="punch")),
+    (6.00, "v@52.6", dict(tr="fade", brand=True)),
+    (7.33, "gaztelugatxe1", dict()),                         # San Juan de Gaztelugatxe
+    (8.00, "anchoas-gaintza-getaria_L", dict()),             # puerto de Getaria
+    (8.67, "pagoeta-txakoli_R", dict()),                     # viñedos frente al mar
+    (9.33, "elantxobe", dict()),                             # Elantxobe, pueblo marinero
+    # ESCENA 3 — experiencias reales de BASQPLAN (el título solo va sobre sus propias imágenes)
+    (10.00, "v@80.0", dict()),
+    (11.33, "v@54.4", dict()),
+    (12.67, "granja-barco-flysch_L", dict()),
+    (13.67, "pagoeta-txakoli_L", dict()),
+    (14.33, "otzarreta_vert", dict()),                       # hayedo de Otzarreta
+    (15.00, "urkiola_caballos", dict(pos=(0.3, 0.5))),       # caballos en Urkiola
+    (15.67, "aereo_urola", dict()),                          # costa del Urola desde el aire
+    (16.33, "pagoeta-anchoas-getaria_R", dict()),
+    (17.00, "getaria_ilun", dict()),                         # Getaria al anochecer
+    (17.67, "ceramica-barco-flysch_L", dict()),
+    (18.33, "ceramica-ganeta_L", dict()),
+    (19.00, "gaintza-barco-flysch_L", dict()),
+    (19.67, "v@57.8", dict()),                               # alguien contemplando el mar
+    (20.33, "pasaia", dict()),                               # Pasai Donibane
+    (20.67, "guggenheim_vert", dict()),                      # Bilbao
+    (21.00, "barco-flysch-gaintza_L", dict()),               # Flysch
+    (21.33, "urkiola_cruces", dict()),                       # Urkiola
+    (21.67, "costa_zumaia", dict()),                         # costa de Zumaia
+    (22.00, "gaztelugatxe_vert", dict()),                    # Gaztelugatxe
+    (22.33, "anchoas-gaintza-getaria_R", dict()),            # viñedos dorados
+    (22.67, "v@62.8", dict()),                               # mar abierto y cabo
     # ESCENA 4 — clímax: lo más espectacular, cortes a medio tiempo
-    (23.33, "v@68.3", dict(move="in", tr="punch")),
-    (23.67, "v@77.6", dict(move="in", tr="punch")),
-    (24.00, "v@0.6", dict(move="in", tr="punch")),
-    (24.33, "v@21.5", dict(move="in", tr="punch")),
-    (24.67, "v@43.9", dict(move="in", tr="punch")),
-    (25.00, "v@31.0", dict(move="in", tr="punch")),
-    (25.33, "v@15.8", dict(move="in", tr="punch")),
-    (25.67, "v@55.6", dict(move="in", tr="punch")),
+    (23.33, "v@68.3", dict()),
+    (23.67, "v@77.6", dict()),
+    (24.00, "v@0.6", dict()),
+    (24.33, "v@21.5", dict()),
+    (24.67, "v@43.9", dict()),
+    (25.00, "v@31.0", dict()),
+    (25.33, "v@15.8", dict()),
+    (25.67, "v@55.6", dict()),
 ]
 END_START = 26.0          # transición al fondo navy de la marca + logotipo
 END_FADE = 0.5
@@ -145,7 +147,8 @@ _photo_cache = {}
 def photo_base(name):
     """Foto ampliada una vez (con enfoque suave) a 1,35× el tamaño de pantalla para poder moverla."""
     if name not in _photo_cache:
-        im = Image.open(ASSETS / f"{name}.jpg").convert("RGB")
+        path = ASSETS / f"{name}.jpg"
+        im = Image.open(path if path.exists() else ROOT / "photos" / f"{name}.jpg").convert("RGB")
         s = max(W * 1.35 / im.width, H * 1.35 / im.height)
         im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
         _photo_cache[name] = im.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
@@ -182,14 +185,9 @@ def shot_frame(i, t):
     t0, src, o = SHOTS[i]
     t1 = SHOTS[i + 1][0] if i + 1 < len(SHOTS) else END_START + END_FADE
     u = (t - t0) / (t1 - t0)
-    move = o.get("move", "in")
-    # zoom y desplazamiento del "movimiento de cámara"
-    z = {"in": 1.0 + 0.10 * u, "out": 1.10 - 0.10 * u}.get(move, 1.05)
-    dx = {"left": 0.5 - 0.35 * (u - 0.5), "right": 0.5 + 0.35 * (u - 0.5)}.get(move, 0.5)
-    dy = {"up": 0.5 + 0.35 * (u - 0.5)}.get(move, 0.5)
-    # transición de entrada "punch": pequeño golpe de zoom en los primeros fotogramas
-    if o.get("tr") == "punch":
-        z *= 1 + 0.07 * (1 - ease((t - t0) / 0.18))
+    # imágenes estáticas: encuadre fijo (pos), sin zoom ni desplazamiento
+    z = 1.0
+    dx, dy = o.get("pos", (0.5, 0.5))
     if src.startswith("v@"):
         key = (i, src)
         if key not in _footage:
@@ -205,13 +203,6 @@ def shot_frame(i, t):
     y0 = (bh - ch) * dy
     img = base.resize((W, H), Image.BILINEAR if src.startswith("v@") else Image.LANCZOS,
                       box=(x0, y0, x0 + cw, y0 + ch))
-    # transición "whip": barrido lateral con desenfoque de movimiento al entrar
-    if o.get("tr") == "whip":
-        k = (t - t0) / 0.16
-        if k < 1:
-            off = int(W * 0.35 * (1 - ease(k)))
-            img = img.transform(img.size, Image.AFFINE, (1, 0, -off, 0, 1, 0), Image.BILINEAR)
-            img = img.filter(ImageFilter.BoxBlur(int(24 * (1 - k)) + 1))
     return img
 
 
