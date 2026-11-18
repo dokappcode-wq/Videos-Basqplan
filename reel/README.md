@@ -56,6 +56,19 @@ Para la versión definitiva con «Pathos» (Ludovico Einaudi & Robert Ames):
 
 Si el tempo de la canción no encaja con los cortes, ajusta los tiempos en `SHOTS` (en `scripts/build_reel.py`) y vuelve a renderizar. El montaje está en una rejilla de 90 BPM (1 tiempo = 0,667 s).
 
+## Versión corta de 15 s
+
+`output/basqplan_reel_15s_musica_temporal.mp4` y `output/basqplan_reel_15s_sin_musica.mp4`. Solo los mejores planos, con el mismo lenguaje: imágenes fijas y cortes secos.
+
+| Tiempo | Qué se ve | Música («Pathos») |
+|---|---|---|
+| 0:00–0:02 | Negro, dos latidos y «Vivir en Euskadi suena así...» | **0:01.33** primera nota |
+| 0:02–0:09.3 | Flysch cenital → Bakio desde el aire → Gaztelugatxe → acantilados del Flysch → Elantxobe → Otzarreta → costa del Urola → persona frente al mar → manos en la cerámica → viñedos sobre el mar | Crece |
+| 0:09.3–0:12 | 8 planos de 1/3 s: Flysch, Gaztelugatxe, Pasaia, Itzurun… | **Clímax** |
+| 0:12–0:15 | Navy, logotipo, basq*plan*, «Dos experiencias. Un plan único.» y «¿Preparados para descubrir Euskadi?» (desde 0:12.8) | **0:12.00** resolución |
+
+Se genera con `python3 reel/scripts/build_reel_15.py` (los planos están en `SHOTS`, al principio del script).
+
 ## Identidad visual (sacada de basqplan.com)
 
 - **Logotipo:** `brand/web/assets/logo/basqplan-symbol-duo.svg`, la versión oficial de la web para fondo oscuro (crema `#F7F3EC` y dorado `#C6A466`). Se usa tal cual. Para fondo claro existe `basqplan-symbol.svg` (navy y dorado).

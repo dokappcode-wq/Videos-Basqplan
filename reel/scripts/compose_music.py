@@ -123,9 +123,9 @@ def compose():
     return mid
 
 
-def render(mid, total=30.4):
+def render(mid, total=30.4, name="music_temp"):
     OUT.mkdir(parents=True, exist_ok=True)
-    midi = OUT / "music_temp.mid"
+    midi = OUT / f"{name}.mid"
     mid.write(str(midi))
     raw = OUT / "_raw.wav"
     subprocess.run(["fluidsynth", "-ni", "-g", "0.55", "-r", "48000",
@@ -134,12 +134,12 @@ def render(mid, total=30.4):
                     "-F", str(raw), SF2, str(midi)], check=True, capture_output=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-t", f"{total}",
                     "-af", "highpass=f=30,loudnorm=I=-15:TP=-1.5:LRA=14,"
-                           f"afade=t=out:st={total - 1.6}:d=1.6", "-ar", "48000", str(OUT / "music_temp.wav")],
+                           f"afade=t=out:st={total - 1.6}:d=1.6", "-ar", "48000", str(OUT / f"{name}.wav")],
                    check=True)
     raw.unlink()
 
 
-def heartbeat(total=30.4, sr=48000):
+def heartbeat(total=30.4, sr=48000, beats=None, name="heartbeat"):
     """Latido grave y cinematográfico (lub-dub) sintetizado."""
     t = np.arange(int(sr * total)) / sr
     out = np.zeros_like(t)
@@ -151,13 +151,13 @@ def heartbeat(total=30.4, sr=48000):
         ph = 2 * np.pi * (f * x - 22 * decay * np.expm1(-x / decay))
         return amp * env * np.sin(np.where(on, ph, 0))
 
-    for t0, a in HEARTBEATS:
+    for t0, a in (beats or HEARTBEATS):
         out += thump(t0, 48, a, 0.11) + thump(t0 + 0.24, 42, 0.68 * a, 0.10)
     # cola de sala muy suave
     tail = np.convolve(out, np.exp(-np.arange(int(0.35 * sr)) / (0.08 * sr)) * 0.0009, mode="full")[: len(out)]
     out = np.tanh((out + tail) * 1.5) * 0.92
     pcm = (np.stack([out, out], 1) * 32767).astype(np.int16)
-    with wave.open(str(OUT / "heartbeat.wav"), "wb") as w:
+    with wave.open(str(OUT / f"{name}.wav"), "wb") as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr); w.writeframes(pcm.tobytes())
 
 

@@ -93,6 +93,11 @@ SHOTS = [
 ]
 END_START = 26.0          # transición al fondo navy de la marca + logotipo
 END_FADE = 0.5
+Q_TIME = 27.3            # entra «¿Preparados para descubrir Euskadi?»
+TEXT_IN, TEXT_STEP, TEXT_OUT = 0.45, 0.045, 3.05   # texto inicial: inicio, retardo por letra, salida
+OUT_NAME = "basqplan_reel"
+HB_FILE, MUSIC_FILE = "heartbeat.wav", "music_temp.wav"
+MAKE_COVER = True
 
 # ------------------------------------------------------------------ utilidades
 def font(name, size):
@@ -329,8 +334,8 @@ def frame(t):
             img = draw_label(img, lab[0], lab[1], a)
 
     # texto inicial: aparece letra a letra, se va cuando entra la imagen
-    if t < 3.75:
-        a_out = 1 - ease_io((t - 3.05) / 0.5)
+    if t < TEXT_OUT + 0.7:
+        a_out = 1 - ease_io((t - TEXT_OUT) / 0.5)
         layer_img = img
         lines = TEXT_OPEN
         # alfa por carácter: aparición progresiva
@@ -344,8 +349,8 @@ def frame(t):
             widths = [d.textlength(c, font=F_OPEN) for c in line]
             x = (W - (sum(widths) + 2 * (len(line) - 1))) / 2
             for c, cw in zip(line, widths):
-                ta = ease((t - 0.45 - idx * 0.045) / 0.45) * a_out
-                rise = 12 * (1 - ease((t - 0.45 - idx * 0.045) / 0.6))
+                ta = ease((t - TEXT_IN - idx * TEXT_STEP) / 0.45) * a_out
+                rise = 12 * (1 - ease((t - TEXT_IN - idx * TEXT_STEP) / 0.6))
                 if ta > 0:
                     d.text((x, y + rise - F_OPEN.getbbox("ÁHgy")[1]), c, font=F_OPEN, fill=(*CREAM, int(255 * ta)))
                 x += cw + 2
@@ -366,12 +371,12 @@ def frame(t):
             img = bg
         e = t - END_START
         # bloque de marca: logo + nombre + lema, sube un poco cuando entra la pregunta
-        lift = -110 * ease_io((t - 27.3) / 0.6)
+        lift = -110 * ease_io((t - Q_TIME) / 0.6)
         img = paste_logo(img, H * 0.36 + lift, ease((e - 0.25) / 0.6), scale=0.80 + 0.04 * ease(e / 1.2))
         img = draw_wordmark(img, H * 0.36 + 215 + lift, ease((e - 0.55) / 0.5), size_scale=0.95)
         img = draw_lines(img, [(TAGLINE, F_TAG, GOLD_LIGHT, 0)], H * 0.36 + 320 + lift, ease((e - 0.9) / 0.5))
         # la pregunta final, con protagonismo
-        qa = ease((t - 27.3) / 0.7)
+        qa = ease((t - Q_TIME) / 0.7)
         if qa > 0:
             d = ImageDraw.Draw(img)
             lw = int(70 * qa)
@@ -384,10 +389,10 @@ def frame(t):
 
 # ------------------------------------------------------------------ audio y salida
 def mix(with_music, dest):
-    ins = ["-i", str(AUDIO / "heartbeat.wav")]
+    ins = ["-i", str(AUDIO / HB_FILE)]
     graph = "[0:a]volume=1.0[hb];"
     if with_music:
-        ins += ["-i", str(AUDIO / "music_temp.wav")]
+        ins += ["-i", str(AUDIO / MUSIC_FILE)]
         graph += "[1:a]volume=1.0[mu];[hb][mu]amix=inputs=2:normalize=0[m];"
     else:
         graph += "[hb]anull[m];"
@@ -430,7 +435,7 @@ def main():
     enc.stdin.close(); enc.wait()
     for f in _footage.values():
         f.p.kill()
-    for name, music in (("basqplan_reel_musica_temporal", True), ("basqplan_reel_sin_musica", False)):
+    for name, music in ((f"{OUT_NAME}_musica_temporal", True), (f"{OUT_NAME}_sin_musica", False)):
         wav = AUDIO / f"_{name}.wav"
         mix(music, wav)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(wav), "-c:v", "copy",
@@ -439,6 +444,8 @@ def main():
         wav.unlink()
         print(f"reel/output/{name}.mp4")
     silent.unlink()
+    if not MAKE_COVER:
+        return
     cover().save(OUT / "basqplan_reel_portada.jpg", quality=95)
     print("reel/output/basqplan_reel_portada.jpg")
 
