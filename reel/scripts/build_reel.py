@@ -51,7 +51,7 @@ SHOTS = [
     # ESCENA 1 — gancho: negro + latido + texto; la imagen entra con la música
     (3.33, "v@19.6", dict(move="in", tr="fade")),            # el mar rompiendo en el Flysch (cenital)
     (4.67, "v@14.6", dict(move="right", tr="cut")),          # costa verde sobre el Cantábrico
-    (5.33, "anchoas-ceramica_L", dict(move="in", tr="cut")),  # detalle: anchoas (intriga)
+    (5.33, "v@45.4", dict(move="in", tr="cut")),             # detalle: rocas del Flysch y agua (intriga)
     # ESCENA 2 — entra BASQPLAN (6.00–7.33 revelado de marca sobre el Flysch)
     (6.00, "v@52.6", dict(move="in", tr="fade", brand=True)),
     (7.33, "v@29.6", dict(move="left", tr="punch")),         # costa
@@ -59,7 +59,7 @@ SHOTS = [
     (8.67, "pagoeta-txakoli_R", dict(move="up", tr="cut")),  # viñedos frente al mar
     (9.33, "granja-txakoli_R", dict(move="in", tr="cut")),   # gastronomía: txakoli
     # ESCENA 3 — experiencias reales de BASQPLAN (aceleran con la música)
-    (10.00, "gaintza-barco-flysch_R", dict(move="right", tr="whip", label=("Barco por el Flysch", "Zumaia"))),
+    (10.00, "v@80.0", dict(move="right", tr="whip", label=("Barco por el Flysch", "Zumaia"))),  # el Flysch desde el mar
     (11.33, "v@54.4", dict(move="in", tr="cut", label=("Barco por el Flysch", "Zumaia"))),
     (12.67, "granja-barco-flysch_L", dict(move="in", tr="whip", label=("Caserío y granja", None))),
     (13.67, "pagoeta-txakoli_L", dict(move="left", tr="cut", label=("Caserío y granja", None))),
