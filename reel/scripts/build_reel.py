@@ -40,7 +40,7 @@ CREAM = (247, 243, 236)
 
 # ------------------------------------------------------------------ textos
 TEXT_OPEN = ["Vivir en Euskadi", "suena así..."]
-TAGLINE = "Dos experiencias. Un plan único."
+TAGLINE = "Una reserva única, llena de experiencias."
 QUESTION = ["¿Preparados para", "descubrir Euskadi?"]
 
 # ------------------------------------------------------------------ escaleta

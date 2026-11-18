@@ -26,7 +26,7 @@ Sin voz en off. Concepto: el sonido de Euskadi → las experiencias reales de BA
 | 0:06–0:10 | 2 · Costa y pueblos | Aéreo del Flysch, Gaztelugatxe, puerto de Getaria, viñedos frente al mar, Elantxobe (el logotipo se reserva para el cierre) | Arpegio, entran las cuerdas |
 | 0:10–0:23.3 | 3 · Experiencias | Sin títulos. El Flysch desde el mar, colinas de Pagoeta, caserío, hayedo de Otzarreta, monte Anboto, costa del Urola, playa de Itzurun, Getaria, taller de cerámica, artesano cestero, persona frente al mar. Desde 0:20.3 los cortes pasan a medio tiempo: Pasaia, Bilbao, Urkiola, Zumaia, Gaztelugatxe, viñedos | Crece: chelo, timbal, redoble en 0:22 |
 | 0:23.3–0:26 | 4 · Clímax | 8 planos aéreos de dron de 1/3 s, cortes secos | Clímax en 0:23.33 (platillo) |
-| 0:26–0:30 | 4 · Cierre | Fundido a navy `#101825` → logotipo → basq*plan* → «Dos experiencias. Un plan único.» → **«¿Preparados para descubrir Euskadi?»** (desde 0:27.3, en pantalla 2,7 s) | Acorde final en Do mayor, nota de piano en 0:27.2 |
+| 0:26–0:30 | 4 · Cierre | Fundido a navy `#101825` → logotipo → basq*plan* → «Una reserva única, llena de experiencias.» → **«¿Preparados para descubrir Euskadi?»** (desde 0:27.3, en pantalla 2,7 s) | Acorde final en Do mayor, nota de piano en 0:27.2 |
 
 Las fotos son **estáticas** (sin zoom ni movimiento) y los cortes son secos; los planos de dron son vídeo con su movimiento natural.
 
@@ -65,7 +65,7 @@ Si el tempo de la canción no encaja con los cortes, ajusta los tiempos en `SHOT
 | 0:00–0:02 | Negro, dos latidos y «Vivir en Euskadi suena así...» | **0:01.33** primera nota |
 | 0:02–0:09.3 | Flysch cenital → Bakio desde el aire → Gaztelugatxe → acantilados del Flysch → Elantxobe → Otzarreta → costa del Urola → persona frente al mar → manos en la cerámica → viñedos sobre el mar | Crece |
 | 0:09.3–0:12 | 8 planos de 1/3 s: Flysch, Gaztelugatxe, Pasaia, Itzurun… | **Clímax** |
-| 0:12–0:15 | Navy, logotipo, basq*plan*, «Dos experiencias. Un plan único.» y «¿Preparados para descubrir Euskadi?» (desde 0:12.8) | **0:12.00** resolución |
+| 0:12–0:15 | Navy, logotipo, basq*plan*, «Una reserva única, llena de experiencias.» y «¿Preparados para descubrir Euskadi?» (desde 0:12.8) | **0:12.00** resolución |
 
 Se genera con `python3 reel/scripts/build_reel_15.py` (los planos están en `SHOTS`, al principio del script).
 
@@ -75,7 +75,7 @@ Se genera con `python3 reel/scripts/build_reel_15.py` (los planos están en `SHO
 - **Nombre:** «basq*plan*» en minúsculas; Fraunces SemiBold, con «plan» en cursiva dorada, como en la cabecera de la web.
 - **Colores:** navy `#101825` · dorado `#C9A86B` · dorado claro `#D4C4A8` · crema `#F7F3EC`.
 - **Tipografías:** Fraunces (titulares) y Space Grotesk (etiquetas), las de la web. Licencia SIL OFL.
-- **Lema:** «Dos experiencias. Un plan único.», tal como aparece en la web.
+- **Lema:** «Una reserva única, llena de experiencias.», tal como aparece en la web.
 - **Color del vídeo:** curva en S suave, sombras ligeramente frías (azules del Cantábrico), luces cálidas, saturación contenida, viñeta suave y grano fino. Está en la función `grade()`.
 
 ## Recursos visuales utilizados
