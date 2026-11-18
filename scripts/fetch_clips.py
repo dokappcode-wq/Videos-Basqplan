@@ -1,8 +1,9 @@
 """Descarga vídeos de Wikimedia Commons (versión transcodificada ~1080p) y guarda créditos.
 Uso: python3 scripts/fetch_clips.py clips/list.txt   (formato: nombre_local|File:Titulo.webm)"""
-import html, json, re, sys, time, urllib.error, urllib.parse, urllib.request
+import html, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
-UA = {"User-Agent": "VideoMontageBuilder/1.0 (python-urllib)"}
+# Wikimedia pide un User-Agent con contacto: pásalo en WIKIMEDIA_UA (no se guarda en el repositorio).
+UA = {"User-Agent": os.environ.get("WIKIMEDIA_UA", "VideoMontageBuilder/1.0 (python-urllib)")}
 
 
 def get(url, tries=6):
