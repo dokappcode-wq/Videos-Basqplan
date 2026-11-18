@@ -1,9 +1,9 @@
 """Descarga fotos de Wikimedia Commons (miniatura de 2000px de alto) y guarda sus créditos.
 Uso: python3 scripts/fetch_commons.py photos/list.txt  (formato: nombre_local|File:Titulo.jpg)"""
-import html, json, re, sys, time, urllib.error, urllib.parse, urllib.request
+import html, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 
-THUMB_H = 2000
+THUMB_H = int(os.environ.get("THUMB_H", 2000))
 THUMB = f"h{THUMB_H}"
 UA = {"User-Agent": "VideoMontageBuilder/1.0 (python-urllib)"}
 

@@ -45,11 +45,12 @@ BANDS = [
 ]
 TITLE_FROM = MUSIC_START + 2 * BEAT
 MONTAGE_START = MUSIC_START + 4 * BEAT
-# Montaje: (foto, duración en tiempos). Suma = 12 tiempos (3 compases).
+# Montaje: (foto o "clip:nombre@segundo", duración en tiempos). Suma = 12 tiempos (3 compases).
+# Las fotos se mueven con un desplazamiento lento + zoom, como un vuelo de dron.
 MONTAGE = [
-    ("zumaia_vert", 2), ("gaztelugatxe_vert", 2),                 # "Acantilados que se asoman al mar."
-    ("otzarreta", 2), ("elantxobe", 1), ("hondarribia_vert", 1),  # "Bosques que parecen sacados de un cuento."
-    ("getaria_ilun", 2), ("gaztelugatxe2", 2),                    # "Esto es Euskadi."
+    ("gaztelugatxe1", 2), ("costa_zumaia", 2),         # "Hay lugares que no se explican."
+    ("pasaia", 2), ("zumaia_vert", 1), ("elantxobe", 1),   # "Se viven."
+    ("gaztelugatxe_vert", 2), ("getaria_ilun", 2),
 ]
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el logo
 END_START = MONTAGE_START + sum(b for _, b in MONTAGE) * BEAT
@@ -58,10 +59,9 @@ DURATION = END_START + END_LEN
 
 # Locución: (archivo, segundo en que empieza)
 VOICE = [
-    ("vo_00.wav", MONTAGE_START + 0.15),   # Acantilados que se asoman al mar.
-    ("vo_01.wav", MONTAGE_START + 2.65),   # Bosques que parecen sacados de un cuento.
-    ("vo_02.wav", MONTAGE_START + 5.25),   # Esto es Euskadi.
-    ("vo_03.wav", END_START + 0.6),        # ¿Preparados para descubrir Euskadi?
+    ("vo_00.wav", MONTAGE_START + 0.25),   # Hay lugares que no se explican.
+    ("vo_01.wav", MONTAGE_START + 2.75),   # Se viven.
+    ("vo_02.wav", END_START + 0.6),        # ¿Preparados para descubrir Euskadi?
 ]
 
 
@@ -233,10 +233,12 @@ def frame(t):
     # --- Fase 3: montaje a pantalla completa, al ritmo de la música
     if t < END_START:
         ts = MONTAGE_START
-        for name, beats in MONTAGE:
+        for k, (name, beats) in enumerate(MONTAGE):
             d = beats * BEAT
             if t < ts + d:
-                return cover(name, W, H, (t - ts) / d, zoom=0.04 + 0.02 * beats)
+                u = (t - ts) / d
+                side = 1 if k % 2 == 0 else -1   # alterna la dirección del "vuelo"
+                return cover(name, W, H, u, zoom=0.06 + 0.03 * beats, pan=(0.5 + side * 0.18 * (u - 0.5), 0.5))
             ts += d
 
     # --- Cierre de marca
