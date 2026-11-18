@@ -1,0 +1,39 @@
+entrada,salida,plano,fuente,texto en pantalla,movimiento,transición,duración (s)
+00:00.00,00:03.33,Negro,—,Latido + «Vivir en Euskadi suena así...» letra a letra,—,fundido,—
+00:03.33,00:04.67,Aéreo cenital: el mar rompe contra el Flysch,portada.mp4 desde 19.6 s,,in,fade,1.34
+00:04.67,00:05.33,Aéreo: costa verde sobre el Cantábrico,portada.mp4 desde 14.6 s,,right,cut,0.66
+00:05.33,00:06.00,Detalle: anchoas (intriga),reel/assets/anchoas-ceramica_L.jpg,,in,cut,0.67
+00:06.00,00:07.33,Aéreo Flysch + revelado del logotipo basqplan,portada.mp4 desde 52.6 s,logotipo + basqplan,in,fade,1.33
+00:07.33,00:08.00,Aéreo: Flysch con oleaje,portada.mp4 desde 29.6 s,,left,punch,0.67
+00:08.00,00:08.67,Puerto de Getaria,reel/assets/anchoas-gaintza-getaria_L.jpg,,in,cut,0.67
+00:08.67,00:09.33,Viñedos frente al mar,reel/assets/pagoeta-txakoli_R.jpg,,up,cut,0.66
+00:09.33,00:10.00,Txakoli sirviéndose en copas,reel/assets/granja-txakoli_R.jpg,,in,cut,0.67
+00:10.00,00:11.33,Barco con gente frente al Flysch,reel/assets/gaintza-barco-flysch_R.jpg,Barco por el Flysch · Zumaia,right,whip,1.33
+00:11.33,00:12.67,Aéreo: acantilados del Flysch,portada.mp4 desde 54.4 s,Barco por el Flysch · Zumaia,in,cut,1.34
+00:12.67,00:13.67,Granja: vaca mirando a cámara,reel/assets/granja-barco-flysch_L.jpg,Caserío y granja,in,whip,1.00
+00:13.67,00:14.33,Caserío,reel/assets/pagoeta-txakoli_L.jpg,Caserío y granja,left,cut,0.66
+00:14.33,00:15.33,Cata: copa de txakoli,reel/assets/k5-ganeta-txakoli_L.jpg,Cata de txakoli · Aia · Getaria,in,whip,1.00
+00:15.33,00:16.00,Bodega entre viñedos y mar,reel/assets/barco-flysch-ganeta_R.jpg,Cata de txakoli · Aia · Getaria,right,cut,0.67
+00:16.00,00:16.67,Amigos abrazados en el viñedo,reel/assets/k5-ganeta-txakoli_R.jpg,Cata de txakoli · Aia · Getaria,in,cut,0.67
+00:16.67,00:17.33,Obrador: preparando anchoas,reel/assets/pagoeta-anchoas-getaria_R.jpg,Obrador de anchoas · Getaria,in,whip,0.66
+00:17.33,00:18.00,Puerto pesquero de Getaria (vídeo),portada.mp4 desde 5.6 s,Obrador de anchoas · Getaria,left,cut,0.67
+00:18.00,00:18.67,Manos pintando cerámica,reel/assets/ceramica-barco-flysch_L.jpg,Taller de cerámica · Zumaia,in,whip,0.67
+00:18.67,00:19.33,Ceramista trabajando,reel/assets/ceramica-ganeta_L.jpg,Taller de cerámica · Zumaia,out,cut,0.66
+00:19.33,00:20.00,Artesano cestero (oficios),reel/assets/gaintza-barco-flysch_L.jpg,Oficios de Pagoeta · Aia,in,whip,0.67
+00:20.00,00:20.67,Persona contemplando el mar,portada.mp4 desde 57.8 s,,in,cut,0.67
+00:20.67,00:21.00,Vendimia en Getaria,reel/assets/barco-flysch-gaintza_R.jpg,,in,punch,0.33
+00:21.00,00:21.33,Taller de cerámica en grupo,reel/assets/k5-ceramica_R.jpg,,in,punch,0.33
+00:21.33,00:21.67,Barco y Flysch,reel/assets/barco-flysch-gaintza_L.jpg,,right,punch,0.34
+00:21.67,00:22.00,Taller compartido,reel/assets/anchoas-ceramica_R.jpg,,in,punch,0.33
+00:22.00,00:22.33,Viñedos de Getaria,reel/assets/pagoeta-oficios-gaintza_R.jpg,,up,punch,0.33
+00:22.33,00:22.67,Viñedos dorados,reel/assets/anchoas-gaintza-getaria_R.jpg,,in,punch,0.34
+00:22.67,00:23.33,Aéreo: mar abierto y cabo,portada.mp4 desde 62.8 s,,in,punch,0.66
+00:23.33,00:23.67,Aéreo: Flysch,portada.mp4 desde 68.3 s,,in,punch,0.34
+00:23.67,00:24.00,Rocas del Flysch y oleaje,portada.mp4 desde 77.6 s,,in,punch,0.33
+00:24.00,00:24.33,Aéreo cenital Flysch,portada.mp4 desde 0.6 s,,in,punch,0.33
+00:24.33,00:24.67,Aéreo cenital oleaje,portada.mp4 desde 21.5 s,,in,punch,0.34
+00:24.67,00:25.00,Rasa mareal del Flysch,portada.mp4 desde 43.9 s,,in,punch,0.33
+00:25.00,00:25.33,Aéreo Flysch,portada.mp4 desde 31.0 s,,in,punch,0.33
+00:25.33,00:25.67,Costa verde,portada.mp4 desde 15.8 s,,in,punch,0.34
+00:25.67,00:26.00,Acantilados del Flysch,portada.mp4 desde 55.6 s,,in,punch,0.33
+00:26.00,00:30.00,Cierre sobre navy #101825,logo oficial fondo oscuro,"basqplan · Dos experiencias. Un plan único. · ¿Preparados para descubrir Euskadi? (27,3 s)",—,fundido a navy,4.00

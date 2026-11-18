@@ -17,9 +17,9 @@ def _paths(svg_text):
         yield fill, polys
 
 
-def render_logo(width, colors=None, ss=4):
-    """colors: dict para recolorear, p. ej. {"#033455": "#FFFFFF"}."""
-    text = SVG.read_text()
+def render_logo(width, colors=None, ss=4, svg=None):
+    """colors: dict para recolorear, p. ej. {"#033455": "#FFFFFF"}. svg: ruta a otro SVG (por defecto el original)."""
+    text = Path(svg).read_text() if svg else SVG.read_text()
     vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', text).group(1).split()]
     scale = width * ss / vb[2]
     size = (int(vb[2] * scale), int(vb[3] * scale))
