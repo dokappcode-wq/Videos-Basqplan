@@ -4,6 +4,8 @@
 
 | Foto | Autor | Licencia | Original |
 |---|---|---|---|
+| `aereo_bakio.jpg` | Adam Cli | CC BY-SA 4.0 | [File:Bakio 44.jpg](https://commons.wikimedia.org/wiki/File:Bakio_44.jpg) |
+| `aereo_urola.jpg` | Adam Cli | CC BY-SA 4.0 | [File:Urola kosta.jpg](https://commons.wikimedia.org/wiki/File:Urola_kosta.jpg) |
 | `anboto.jpg` | Tiia Monto | CC BY-SA 3.0 | [File:Anboto 3.jpg](https://commons.wikimedia.org/wiki/File:Anboto_3.jpg) |
 | `costa_zumaia.jpg` | Jörg Braukmann | CC BY-SA 4.0 | [File:Basque coast near Zumaia.jpg](https://commons.wikimedia.org/wiki/File:Basque_coast_near_Zumaia.jpg) |
 | `donostia.jpg` | Keta | CC BY-SA 2.5 | [File:Donostia Igeldotik.jpg](https://commons.wikimedia.org/wiki/File:Donostia_Igeldotik.jpg) |
@@ -28,7 +30,7 @@
 ## Audio
 
 - Música: original, generada con `scripts/compose_music.py` y sintetizada con el banco de sonidos FluidR3_GM (MIT).
-- Voz: Piper TTS, voz `es_ES-davefx-medium` (CC0).
+- Voz: Kokoro TTS (Apache 2.0), voz `em_alex`.
 
 ## Tipografías
 

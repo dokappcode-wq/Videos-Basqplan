@@ -138,5 +138,19 @@
     "thumb": "h2000",
     "author": "Telle",
     "license": "CC BY-SA 3.0"
+  },
+  "aereo_bakio": {
+    "title": "File:Bakio 44.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bakio_44.jpg",
+    "thumb": "h2000",
+    "author": "Adam Cli",
+    "license": "CC BY-SA 4.0"
+  },
+  "aereo_urola": {
+    "title": "File:Urola kosta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Urola_kosta.jpg",
+    "thumb": "h2000",
+    "author": "Adam Cli",
+    "license": "CC BY-SA 4.0"
   }
 }

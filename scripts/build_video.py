@@ -48,9 +48,9 @@ MONTAGE_START = MUSIC_START + 4 * BEAT
 # Montaje: (foto o "clip:nombre@segundo", duración en tiempos). Suma = 12 tiempos (3 compases).
 # Las fotos se mueven con un desplazamiento lento + zoom, como un vuelo de dron.
 MONTAGE = [
-    ("gaztelugatxe1", 2), ("costa_zumaia", 2),         # "Hay lugares que no se explican."
-    ("pasaia", 2), ("zumaia_vert", 1), ("elantxobe", 1),   # "Se viven."
-    ("gaztelugatxe_vert", 2), ("getaria_ilun", 2),
+    ("aereo_bakio", 2), ("gaztelugatxe1", 2),           # "Hay lugares que no se explican."
+    ("aereo_urola", 2), ("zumaia_vert", 1), ("elantxobe", 1),   # "Se viven."
+    ("costa_zumaia", 2), ("getaria_ilun", 2),
 ]
 END_SHOT = "gaztelugatxe_ilun"   # último plano, con el logo
 END_START = MONTAGE_START + sum(b for _, b in MONTAGE) * BEAT

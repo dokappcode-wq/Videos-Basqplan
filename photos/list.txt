@@ -17,3 +17,5 @@ zumaia_vert|File:Zumaia Itzurun 6.JPG
 costa_zumaia|File:Basque coast near Zumaia.jpg
 elantxobe|File:27032018-Elantxobe-general.jpg
 pintxos|File:Pinchos bermeo 2.JPG
+aereo_bakio|File:Bakio 44.jpg
+aereo_urola|File:Urola kosta.jpg
