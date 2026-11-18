@@ -10,7 +10,7 @@ import build_reel as b  # noqa: E402
 
 DESC = {
     "v@19.6": "Aéreo cenital: el mar rompe contra el Flysch", "aereo_bakio": "Bakio y Gaztelugatxe desde el aire",
-    "v@45.4": "Detalle: rocas del Flysch y agua", "v@52.6": "Aéreo del Flysch + logotipo basqplan",
+    "v@45.4": "Detalle: rocas del Flysch y agua", "v@52.6": "Aéreo del Flysch", "k5-ceramica_L": "Colinas verdes de Pagoeta", "anboto": "Monte Anboto", "zumaia_vert": "Playa de Itzurun, Zumaia",
     "gaztelugatxe1": "San Juan de Gaztelugatxe", "anchoas-gaintza-getaria_L": "Puerto de Getaria",
     "pagoeta-txakoli_R": "Viñedos frente al mar", "elantxobe": "Elantxobe, pueblo marinero",
     "v@80.0": "El Flysch desde el mar", "v@54.4": "Aéreo: acantilados del Flysch",

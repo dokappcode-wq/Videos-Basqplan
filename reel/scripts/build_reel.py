@@ -54,7 +54,7 @@ SHOTS = [
     (4.67, "aereo_bakio", dict()),                           # Bakio y Gaztelugatxe desde el aire
     (5.33, "v@45.4", dict()),                                # detalle: rocas del Flysch y agua (intriga)
     # ESCENA 2 — entra BASQPLAN (6.00–7.33 revelado de marca sobre el Flysch)
-    (6.00, "v@52.6", dict(tr="fade", brand=True)),
+    (6.00, "v@52.6", dict(tr="fade")),
     (7.33, "gaztelugatxe1", dict()),                         # San Juan de Gaztelugatxe
     (8.00, "anchoas-gaintza-getaria_L", dict()),             # puerto de Getaria
     (8.67, "pagoeta-txakoli_R", dict()),                     # viñedos frente al mar
@@ -62,12 +62,12 @@ SHOTS = [
     # ESCENA 3 — experiencias reales de BASQPLAN (el título solo va sobre sus propias imágenes)
     (10.00, "v@80.0", dict()),
     (11.33, "v@54.4", dict()),
-    (12.67, "granja-barco-flysch_L", dict()),
+    (12.67, "k5-ceramica_L", dict()),
     (13.67, "pagoeta-txakoli_L", dict()),
     (14.33, "otzarreta_vert", dict()),                       # hayedo de Otzarreta
-    (15.00, "urkiola_caballos", dict(pos=(0.3, 0.5))),       # caballos en Urkiola
+    (15.00, "anboto", dict()),                               # monte Anboto
     (15.67, "aereo_urola", dict()),                          # costa del Urola desde el aire
-    (16.33, "pagoeta-anchoas-getaria_R", dict()),
+    (16.33, "zumaia_vert", dict()),
     (17.00, "getaria_ilun", dict()),                         # Getaria al anochecer
     (17.67, "ceramica-barco-flysch_L", dict()),
     (18.33, "ceramica-ganeta_L", dict()),

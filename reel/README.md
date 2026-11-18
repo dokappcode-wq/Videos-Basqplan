@@ -23,8 +23,8 @@ Sin voz en off. Concepto: el sonido de Euskadi → las experiencias reales de BA
 |---|---|---|---|
 | 0:00–0:03.3 | 1 · Gancho | Negro. «Vivir en Euskadi / suena así...» aparece letra a letra | Tres latidos (0:00.25 · 0:01.05 · 0:01.85) |
 | 0:03.3–0:06 | 1 · Gancho | Fundido desde negro: el mar rompe contra el Flysch (cenital) → Bakio y Gaztelugatxe desde el aire → detalle de las rocas del Flysch | La música entra en 0:02.00 (piano solo) |
-| 0:06–0:10 | 2 · Entra BASQPLAN | Logotipo + «basq*plan*» sobre el Flysch; Gaztelugatxe, puerto de Getaria, viñedos frente al mar, Elantxobe | Arpegio, entran las cuerdas |
-| 0:10–0:23.3 | 3 · Experiencias | Sin títulos. El Flysch desde el mar, granja y caserío, hayedo de Otzarreta, Urkiola, costa del Urola, obrador de anchoas, Getaria, taller de cerámica, artesano cestero, persona frente al mar. Desde 0:20.3 los cortes pasan a medio tiempo: Pasaia, Bilbao, Urkiola, Zumaia, Gaztelugatxe, viñedos | Crece: chelo, timbal, redoble en 0:22 |
+| 0:06–0:10 | 2 · Costa y pueblos | Aéreo del Flysch, Gaztelugatxe, puerto de Getaria, viñedos frente al mar, Elantxobe (el logotipo se reserva para el cierre) | Arpegio, entran las cuerdas |
+| 0:10–0:23.3 | 3 · Experiencias | Sin títulos. El Flysch desde el mar, colinas de Pagoeta, caserío, hayedo de Otzarreta, monte Anboto, costa del Urola, playa de Itzurun, Getaria, taller de cerámica, artesano cestero, persona frente al mar. Desde 0:20.3 los cortes pasan a medio tiempo: Pasaia, Bilbao, Urkiola, Zumaia, Gaztelugatxe, viñedos | Crece: chelo, timbal, redoble en 0:22 |
 | 0:23.3–0:26 | 4 · Clímax | 8 planos aéreos de dron de 1/3 s, cortes secos | Clímax en 0:23.33 (platillo) |
 | 0:26–0:30 | 4 · Cierre | Fundido a navy `#101825` → logotipo → basq*plan* → «Dos experiencias. Un plan único.» → **«¿Preparados para descubrir Euskadi?»** (desde 0:27.3, en pantalla 2,7 s) | Acorde final en Do mayor, nota de piano en 0:27.2 |
 
@@ -46,7 +46,7 @@ Para la versión definitiva con «Pathos» (Ludovico Einaudi & Robert Ames):
 | Momento del vídeo | Qué debe pasar en la música |
 |---|---|
 | **0:02.00** | Primera nota (entrada suave). Antes solo suena el latido |
-| 0:06.00 | Aparece el logotipo: buen sitio para el primer cambio de intensidad |
+| 0:06.00 | Fundido al aéreo del Flysch: buen sitio para el primer cambio de intensidad |
 | 0:10.00 | Empiezan las experiencias: la música empieza a crecer |
 | 0:20.67 | Los cortes se aceleran a medio tiempo |
 | **0:23.33** | **Clímax** (el momento más intenso de la canción) |
