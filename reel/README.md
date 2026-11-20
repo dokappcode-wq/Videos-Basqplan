@@ -59,8 +59,8 @@ Si el tempo de la canción no encaja con los cortes, ajusta los tiempos en `SHOT
 ## Versiones con «Pathos»
 
 - `output/basqplan_reel_pathos.mp4` (30 s) y `output/basqplan_reel_15s_pathos.mp4` (15 s), con el MP3 de «Pathos» que facilitó BASQPLAN.
-- **Sincronía:** la entrada orquestal del tema (segundo 52,40) cae justo en el clímax del montaje: 0:23,33 en el de 30 s y 0:09,33 en el de 15 s. Antes suena el piano suave, realzado 9 dB para que se oiga bajo el latido inicial.
-- **Para regenerarlas:** `python3 reel/scripts/add_song.py ruta/a/Pathos.mp3`. El MP3 no se guarda en el repositorio.
+- **Sincronía:** la canción empieza en el **2:16** del tema justo cuando entra la música en el vídeo (0:02,00 en el de 30 s y 0:01,33 en el de 15 s), después del latido sobre negro.
+- **Para regenerarlas:** `python3 reel/scripts/add_song.py ruta/a/Pathos.mp3 [segundo de inicio, por defecto 136]`. El MP3 no se guarda en el repositorio.
 - **Licencia:** para publicarlas en una cuenta de empresa o como publicidad hace falta licencia comercial de la canción (sincronización + master).
 
 ## Versión corta de 15 s
