@@ -56,6 +56,13 @@ Para la versión definitiva con «Pathos» (Ludovico Einaudi & Robert Ames):
 
 Si el tempo de la canción no encaja con los cortes, ajusta los tiempos en `SHOTS` (en `scripts/build_reel.py`) y vuelve a renderizar. El montaje está en una rejilla de 90 BPM (1 tiempo = 0,667 s).
 
+## Versiones con «Pathos»
+
+- `output/basqplan_reel_pathos.mp4` (30 s) y `output/basqplan_reel_15s_pathos.mp4` (15 s), con el MP3 de «Pathos» que facilitó BASQPLAN.
+- **Sincronía:** la entrada orquestal del tema (segundo 52,40) cae justo en el clímax del montaje: 0:23,33 en el de 30 s y 0:09,33 en el de 15 s. Antes suena el piano suave, realzado 9 dB para que se oiga bajo el latido inicial.
+- **Para regenerarlas:** `python3 reel/scripts/add_song.py ruta/a/Pathos.mp3`. El MP3 no se guarda en el repositorio.
+- **Licencia:** para publicarlas en una cuenta de empresa o como publicidad hace falta licencia comercial de la canción (sincronización + master).
+
 ## Versión corta de 15 s
 
 `output/basqplan_reel_15s_musica_temporal.mp4` y `output/basqplan_reel_15s_sin_musica.mp4`. Solo los mejores planos, con el mismo lenguaje: imágenes fijas y cortes secos.
